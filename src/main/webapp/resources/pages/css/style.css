@@ -13,6 +13,11 @@ body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
 }
+
+
+img.img-fluid.test {
+    height: 420px;
+}
 .accordion-button:not(.collapsed) {
     background-color: #ff9563!important;
 }
@@ -646,7 +651,9 @@ section {
   float: left;
   color: #589af4;
 }
-
+.member-info {
+    background: whitesmoke;
+}
 .about .content .icon-box p {
   font-size: 15px;
   color: #848484;
@@ -657,6 +664,7 @@ section {
     float: left;
 }
 .team.reviews .member {
+	height: 451px;
     width: 50%;
     float: left;
     padding: 0 10px;

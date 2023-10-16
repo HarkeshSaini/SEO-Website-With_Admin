@@ -1,6 +1,6 @@
 package com.hintguys.controller;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -27,16 +27,14 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String index(HttpServletRequest request, Model model) {
-		List<NewsArticles> recentArticle = null;
-		HomeContents homeDetails = null;
 		try {
-			homeDetails=serviceImpl.findHomeContentDetails().get(0);
-			recentArticle=articlesServiceImpl.findRecentNewsArticle("Active", "blog");
+			HomeContents homeDetails=serviceImpl.findHomeContentDetails().get(0);
+			ArrayList<NewsArticles> recentArticle=articlesServiceImpl.getAllRecentNewsArticle("Active");
+			model.addAttribute("homeDetails", homeDetails);
+			model.addAttribute("blogData", recentArticle);
 		} catch (Exception e) {
-			System.out.println("Data -> Index: 0, Size: 0");
+			System.out.println("Size 0: index 0:");
 		}
-		model.addAttribute("homeDetails", homeDetails);
-		model.addAttribute("blogData", recentArticle);
 		return "index";
 	}
 }

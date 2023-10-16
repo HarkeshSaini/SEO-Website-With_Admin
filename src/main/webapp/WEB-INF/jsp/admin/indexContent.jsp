@@ -51,9 +51,12 @@
                         </div>
                         <div class="col-md-4 mb-3">
                            <div class="form-outline">
-                               <input type="text" name="pageType" class="form-control form-control-lg" placeholder="Enter PageType"/>
-                              <div class="form-outline"> 
-                              </div>
+                               <select id="pageType" name="pageType" class="form-select form-control form-control-lg" aria-label="Default select example" required="required">
+                                 <option selected>Select PageType</option>
+                                 <c:forEach var="data" items="${categories}">
+                                  <option value="${data.categoryUrl}">${data.categoryName}</option> 
+                                 </c:forEach>  
+                             </select>
                            </div>
                         </div>
                         </div>

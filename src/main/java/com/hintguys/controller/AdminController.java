@@ -93,12 +93,26 @@ public class AdminController {
 	
 	@GetMapping("/indexContent")
 	private String contentIndex(HttpServletRequest request,Model model) {
+		List<Categories> categories= null;
+		try {
+			categories=adminServiceImpl.findAllCategories();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("categories", categories);
 		model.addAttribute("indexContent", "Submit New Index Content!.");
 		return "admin/indexContent";
 	}
 	
 	@PostMapping("/indexContent")
 	private String contentIndexs(IndexContent indexContent,HttpServletRequest request, MultipartFile file, Model model) {
+		List<Categories> categories= null;
+		try {
+			categories=adminServiceImpl.findAllCategories();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("categories", categories);
 		this.adminServiceImpl.saveIndexContent(indexContent,file,request);
 		this.adminServiceImpl.saveImgFile(request, file);
 		model.addAttribute("indexContent", "Submit New Index Content!.");
@@ -106,7 +120,14 @@ public class AdminController {
 	}
 	
 	@GetMapping("/editIndexContent")
-	private String editIndexContent() {
+	private String editIndexContent(HttpServletRequest request,Model model) {
+		List<Categories> categories= null;
+		try {
+			categories=adminServiceImpl.findAllCategories();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("categories", categories);
 		return "admin/editIndexContent";
 	}
 	

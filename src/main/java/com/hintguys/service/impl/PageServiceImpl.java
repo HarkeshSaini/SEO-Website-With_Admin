@@ -10,15 +10,18 @@ import org.springframework.stereotype.Service;
 import com.hintguys.entity.ContactForm;
 import com.hintguys.entity.FaqsContent;
 import com.hintguys.entity.HomeContent;
+import com.hintguys.entity.IndexContent;
 import com.hintguys.entity.PageContent;
 import com.hintguys.entity.ReviewForm;
 import com.hintguys.form.FaqsContents;
 import com.hintguys.form.HomeContents;
+import com.hintguys.form.IndexContents;
 import com.hintguys.form.PageContents;
 import com.hintguys.form.ReviewForms;
 import com.hintguys.repository.ContactFormRepository;
 import com.hintguys.repository.FaqsContentRepository;
 import com.hintguys.repository.HomeContentRepository;
+import com.hintguys.repository.IndexContentRepositroy;
 import com.hintguys.repository.PageContentRepository;
 import com.hintguys.repository.ReviewFormRepository;
 import com.hintguys.service.PageService;
@@ -33,6 +36,9 @@ public class PageServiceImpl implements PageService {
 	@Autowired
 	public ModelMapper modelMapper;
 
+	@Autowired
+	public IndexContentRepositroy indexContentRepositroy;
+	
 	@Autowired
 	public ReviewFormRepository formRepository;
 	@Autowired
@@ -102,6 +108,17 @@ public class PageServiceImpl implements PageService {
 			}
 		}
 		return arrayList;
+	}
+
+	public IndexContents findByPageTypeIndexContent(String pageType) {
+		List<IndexContent> details = indexContentRepositroy.findByPageType(pageType);
+		ArrayList<IndexContents> arrayList = new ArrayList<IndexContents>();
+		if (!details.isEmpty()) {
+			for (IndexContent content : details) {
+				arrayList.add(modelMapper.map(content, IndexContents.class));
+			}
+		}
+		return arrayList.get(0);
 	}
 
 }

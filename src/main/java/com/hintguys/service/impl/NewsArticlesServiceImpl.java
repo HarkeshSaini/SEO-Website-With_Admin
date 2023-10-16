@@ -20,7 +20,7 @@ public class NewsArticlesServiceImpl implements NewsArticleService {
 
 	@Autowired
 	public NewsArticleRepository articleRepository;
-	
+
 	@Autowired
 	public CategoriesRepository categoriesRepository;
 
@@ -79,7 +79,8 @@ public class NewsArticlesServiceImpl implements NewsArticleService {
 	}
 
 	@Override
-	public ArrayList<NewsArticles> findNewsArticleByTitleUrlAndPageTypeAndStatus(String titleUrl, String pageType, String status) {
+	public ArrayList<NewsArticles> findNewsArticleByTitleUrlAndPageTypeAndStatus(String titleUrl, String pageType,
+			String status) {
 		List<NewsArticle> details = articleRepository.findByTitleUrlAndPageTypeAndStatus(titleUrl, pageType, status);
 		ArrayList<NewsArticles> arrayList = new ArrayList<NewsArticles>();
 		for (NewsArticle newsArticle : details) {
@@ -107,9 +108,9 @@ public class NewsArticlesServiceImpl implements NewsArticleService {
 
 	public List<Categories> findAllCategories() {
 		List<Category> findAll = categoriesRepository.findAll();
-		ArrayList<Categories>  arrayList=new ArrayList<Categories>();
-		for(Category category:findAll) {
-			Categories categories=new Categories();
+		ArrayList<Categories> arrayList = new ArrayList<Categories>();
+		for (Category category : findAll) {
+			Categories categories = new Categories();
 			categories.setCategoryName(category.getCategoryName());
 			categories.setCategoryUrl(category.getCategoryUrl());
 			categories.setId(category.getId());
@@ -121,4 +122,30 @@ public class NewsArticlesServiceImpl implements NewsArticleService {
 		return arrayList;
 	}
 
+	@Override
+	public ArrayList<NewsArticles> getAllRecentNewsArticle(String status) {
+		List<NewsArticle> details = articleRepository.findTop10ByStatus(status);
+		ArrayList<NewsArticles> arrayList = new ArrayList<NewsArticles>();
+		for (NewsArticle newsArticle : details) {
+			NewsArticles articles = new NewsArticles();
+			articles.setCategoryName(newsArticle.getCategoryName());
+			articles.setContent(newsArticle.getContent());
+			articles.setDescription(newsArticle.getDescription());
+			articles.setExtraTag(newsArticle.getExtraTag());
+			articles.setHeading(newsArticle.getHeading());
+			articles.setId(newsArticle.getId());
+			articles.setImgUrl(newsArticle.getImgUrl());
+			articles.setKeywords(newsArticle.getKeywords());
+			articles.setPageType(newsArticle.getPageType());
+			articles.setPosttime(newsArticle.getPosttime());
+			articles.setStatus(newsArticle.getStatus());
+			articles.setTfnFooter(newsArticle.getTfnFooter());
+			articles.setTfnPopup(newsArticle.getTfnPopup());
+			articles.setTfnHeader(newsArticle.getTfnHeader());
+			articles.setTitle(newsArticle.getTitle());
+			articles.setTitleUrl(newsArticle.getTitleUrl());
+			arrayList.add(articles);
+		}
+		return arrayList;
+	}
 }

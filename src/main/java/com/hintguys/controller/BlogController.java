@@ -3,10 +3,8 @@ package com.hintguys.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.ws.spi.http.HttpHandler;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.hintguys.entity.Category;
 import com.hintguys.form.Categories;
 import com.hintguys.form.FaqsContents;
 import com.hintguys.form.HomeContents;
+import com.hintguys.form.IndexContents;
 import com.hintguys.form.NewsArticles;
 import com.hintguys.service.impl.NewsArticlesServiceImpl;
 import com.hintguys.service.impl.PageServiceImpl;
@@ -38,7 +36,9 @@ public class BlogController {
 		List<HomeContents> homeDetails = null;
 		List<NewsArticles> blogData = null;
 		List<NewsArticles> recentArticle = null;
+		IndexContents indexContents=null;
 		try {
+			indexContents=pageServiceImpl.findByPageTypeIndexContent(blogCategories);
 			homeDetails = pageServiceImpl.findHomeContentDetails();
 			recentArticle = articlesServiceImpl.findRecentNewsArticle("Active", blogCategories);
 			blogData = this.articlesServiceImpl.findAllNewsArticlePageTypeAndStatus(blogCategories, "Active");
@@ -50,6 +50,7 @@ public class BlogController {
 		}
 		model.addAttribute("recentArticle", recentArticle);
 		model.addAttribute("blogData", blogData);
+		model.addAttribute("indexPage", indexContents);
 		model.addAttribute("homeDetails", homeDetails.get(0));
 		return "blog/index";
 	}

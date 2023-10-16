@@ -25,7 +25,7 @@
                   <nav aria-label="breadcrumb">
                      <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item"><a href="/blog">Blog</a></li>
+                        <li class="breadcrumb-item"><a href="/${data.pageType}">${data.pageType}</a></li>
                         <li class="breadcrumb-item active" aria-current="page">${data.heading}</li>
                      </ol>
                   </nav>
@@ -41,7 +41,7 @@
                            <c:forEach var="datas" items="${recentArticle}" >
                               <div class="post-item clearfix">
                                  <img src="/resources/admin/images/${datas.imgUrl}" alt="">
-                                 <h4><a href="/blog/${datas.titleUrl}">${datas.heading}</a></h4>
+                                 <h4><a href="/${datas.pageType}/${datas.titleUrl}">${datas.heading}</a></h4>
                                  <time datetime="2020-01-01">${datas.posttime}</time>
                               </div> 
                              </c:forEach>

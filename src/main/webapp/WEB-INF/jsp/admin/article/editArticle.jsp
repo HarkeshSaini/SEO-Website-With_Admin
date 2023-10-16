@@ -51,8 +51,8 @@
                         </div>
                         <div class="col-md-4 mb-3">
                            <div class="form-outline">
-                              <form:label class="form-label" path="imgUrl" for="file">File</form:label>
-                              <input type="file" name="file" class="form-control form-control-lg"/>
+                              <form:label class="form-label" path="imgUrl" for="file">Create Content By User</form:label>
+                              <form:input type="text" path="extraTag" class="form-control form-control-lg" placeholder="Create Content By User.."/>
                            </div>
                         </div>
                         <div class="col-md-4 mb-3">
@@ -71,13 +71,13 @@
                            </div>
                         </div>
                          <div class="row">
-                           <div class="col-md-4 mb-3">
+                           <div class="col-md-3 mb-2">
                               <div class="form-outline">
                                  <label class="form-label" for="posttime">Date</label>
                                  <form:input type="text" path="posttime" class="form-control form-control-lg" placeholder="Enter Posttime" required="required"/>
                               </div>
                            </div>
-                           <div class="col-md-4 mb-3">
+                           <div class="col-md-3 mb-2">
                               <div class="form-outline">
                                  <label class="form-label" for="pageType">Page Type</label>
                                  <form:select id="pageType" path="pageType" class="form-select form-control form-control-lg" aria-label="Default select example" required="required">
@@ -87,7 +87,7 @@
 	                             </form:select>
                               </div>
                            </div>
-                           <div class="col-md-4 mb-3">
+                           <div class="col-md-3 mb-2">
                               <div class="form-outline">
                                   <div class="form-outline">
                                      <label class="form-label" for="status">Status</label>
@@ -96,8 +96,12 @@
 		                                 <form:option value="InActive">InActive</form:option>
 		                             </form:select>
                                  </div>
-                                 <div class="form-outline"> 
-                                 </div>
+                              </div>
+                           </div>
+                            <div class="col-md-3 mb-2">
+                              <div class="form-outline">
+                                 <label class="form-label" for="posttime">File</label>
+                                 <input type="file" name="file" class="form-control form-control-lg"/>
                               </div>
                            </div>
                         </div>

@@ -18,7 +18,12 @@
     <jsp:include page="include/home/header.jsp"></jsp:include>
       <main id="main">
          <div class="home-banner">
+           <c:if test="${not empty homeDetails.imgUrl}">
+            <img src="/resources/admin/images/${homeDetails.imgUrl}" class="img-fluid test" alt="banner">
+           </c:if>
+           <c:if test="${empty homeDetails.imgUrl}">
             <img src="/resources/pages/images/home-banner.jpg" class="img-fluid" alt="banner">
+           </c:if>
          </div>
          <div class="counts">
             <div class="container">
@@ -59,60 +64,23 @@
             <div class="container">
                <div class="row no-gutters">
                   <div class="image col-xl-8 ">
-                     <h3>TOP REVIEWS & BEST OF LISTS</h3>
+                     <h3>TOP BLOG & BEST OF LISTS</h3>
                      <div class="team reviews">
+                      <c:forEach var="data" items="${blogData}" begin="0" end="4">
+                       <c:if test="${data.pageType eq 'blog'}">
                         <div class="member">
-                           <img src="/resources/pages/images/portfolio-1.jpg" class="img-fluid" alt="">
+                           <img src="/resources/admin/images/${data.imgUrl}" class="img-fluid" alt="">
                            <div class="member-info">
                               <div class="member-info-content">
-                                 <span>Phones &amp; Assessories</span>
-                                 <h4>Where does it come from?</h4>
-                                 <p>It is a long established fact that a reader will be distracted by the readable content of a page
-                                    when looking at its
-                                    layout.
-                                 </p>
+                                 <span>${data.extraTag}</span>
+                                 <h4>${data.heading}</h4>
+                                 <p>${fn:escapeXml(fn:substring(data.content.replaceAll('<.*?>' , ""), 0, 100))}</p>
                               </div>
                            </div>
                         </div>
-                        <div class="member">
-                           <img src="/resources/pages/images/portfolio-2.jpg" class="img-fluid" alt="">
-                           <div class="member-info">
-                              <div class="member-info-content">
-                                 <span>Phones &amp; Assessories</span>
-                                 <h4>Sarah Jhonson</h4>
-                                 <p>It is a long established fact that a reader will be distracted by the readable content of a page
-                                    when looking at its
-                                    layout.
-                                 </p>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="member">
-                           <img src="/resources/pages/images/portfolio-3.jpg" class="img-fluid" alt="">
-                           <div class="member-info">
-                              <div class="member-info-content">
-                                 <span>Phones &amp; Assessories</span>
-                                 <h4>William Anderson</h4>
-                                 <p>It is a long established fact that a reader will be distracted by the readable content of a page
-                                    when looking at its
-                                    layout.
-                                 </p>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="member">
-                           <img src="/resources/pages/images/portfolio-4.jpg" class="img-fluid" alt="">
-                           <div class="member-info">
-                              <div class="member-info-content">
-                                 <span>Phones &amp; Assessories</span>
-                                 <h4>Amanda Jepson</h4>
-                                 <p>It is a long established fact that a reader will be distracted by the readable content of a page
-                                    when looking at its
-                                    layout.
-                                 </p>
-                              </div>
-                           </div>
-                        </div>
+                        </c:if>
+                     </c:forEach>   
+                        
                      </div>
                   </div>
                   <div class="col-xl-4">

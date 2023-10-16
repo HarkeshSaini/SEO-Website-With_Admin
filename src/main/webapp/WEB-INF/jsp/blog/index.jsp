@@ -9,9 +9,9 @@
 <html lang="en">
    <head>
       <meta charset="utf-8">
-      <title>Blog</title>
-      <meta name="description" content="Blog" >
-      <meta name="keywords" content="Blog" />
+      <title>${indexPage.title}</title>
+      <meta name="description" content="${indexPage.description}" >
+      <meta name="keywords" content="${indexPage.keywords}" />
       <jsp:include page="../include/home/common.jsp"></jsp:include>
    </head>
    <body>
@@ -21,26 +21,26 @@
 	      <div class="contact-banner">
 	      <img src="/resources/pages/images/banner3.jpg" alt="banner" />
 	      <div class="contact-content">
-	        <span>Blog</span>
+	        <span>${indexPage.bannerContent}</span>
 	        <nav aria-label="breadcrumb">
 	          <ol class="breadcrumb">
-	            <li class="breadcrumb-item"><a href="#">Home</a></li>
-	            <li class="breadcrumb-item active" aria-current="page">Blog</li>
+	            <li class="breadcrumb-item"><a href="/">Home</a></li>
+	            <li class="breadcrumb-item active" aria-current="page">${fn:toUpperCase(indexPage.pageType)}</li>
 	          </ol>
 	        </nav>
 	      </div>
 	    </div>
 	   <div class="slider-blog">
       <div class="container">
-        <h2>Latest Tech Blog</h2>
+        <h2>Latest Tech ${fn:toUpperCase(indexPage.pageType)}</h2>
         <div class="owl-carousel owl-theme" id="blog-news">
           <c:forEach var="data" items="${recentArticle}">  
           <div class="item">
             <div class="owl-inner-sec">
-              <picture> <img src="/resources/admin/images/${data.imgUrl}" class="img-fluid" alt="logo"></picture>
+              <picture><img src="/resources/admin/images/${data.imgUrl}" class="img-fluid" alt="logo"></picture>
               <div class="slide-content">
-                <span>Blog</span>
-                <a class="content_heading" href="/blog/${data.titleUrl}">${(fn:substring(data.heading, 0, 45))}</a>
+                <span>${fn:toUpperCase(indexPage.pageType)}</span>
+                <a class="content_heading" href="/${indexPage.pageType}/${data.titleUrl}">${(fn:substring(data.heading, 0, 45))}</a>
               </div>
             </div>
           </div>
@@ -51,7 +51,7 @@
     <div class="blog_section">
       <div class="container">
         <div class="text-center heading_RWM">
-          <h2 class="main_heading"><span><label>Our<i></i></label><strong> Blogs</strong></span></h2>
+          <h2 class="main_heading"><span><label>Our<i></i></label><strong> ${fn:toUpperCase(indexPage.pageType)}</strong></span></h2>
         </div>
         <div class="row">
 		<c:forEach var="data" items="${blogData}"> 
@@ -60,8 +60,8 @@
               <div class="solution_card">
                 <div class="solu_description">
                 <picture><img src="/resources/admin/images/${data.imgUrl}" height="280px" alt="picture" /></picture>
-                  <span>Microsoft</span>
-                  <a href="/blog/${data.titleUrl}"><h3>${data.heading}</h3></a>
+                  <span>${data.extraTag}</span>
+                  <a href="/${indexPage.pageType}/${data.titleUrl}"><h3>${data.heading}</h3></a>
                   <p>${fn:escapeXml(fn:substring(data.content.replaceAll('<.*?>' , ""), 0, 115))}</p>
                 </div>
               </div>
