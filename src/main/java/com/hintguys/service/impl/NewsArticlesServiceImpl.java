@@ -106,8 +106,8 @@ public class NewsArticlesServiceImpl implements NewsArticleService {
 		return arrayList;
 	}
 
-	public List<Categories> findAllCategories() {
-		List<Category> findAll = categoriesRepository.findAll();
+	public List<Categories> findAllCategories(String status) {
+		List<Category> findAll = categoriesRepository.findByStatus(status);
 		ArrayList<Categories> arrayList = new ArrayList<Categories>();
 		for (Category category : findAll) {
 			Categories categories = new Categories();
@@ -124,7 +124,7 @@ public class NewsArticlesServiceImpl implements NewsArticleService {
 
 	@Override
 	public ArrayList<NewsArticles> getAllRecentNewsArticle(String status) {
-		List<NewsArticle> details = articleRepository.findTop10ByStatus(status);
+		List<NewsArticle> details = articleRepository.findByStatus(status);
 		ArrayList<NewsArticles> arrayList = new ArrayList<NewsArticles>();
 		for (NewsArticle newsArticle : details) {
 			NewsArticles articles = new NewsArticles();

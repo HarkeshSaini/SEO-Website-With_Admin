@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,6 +27,7 @@ import com.hintguys.entity.HomeContent;
 import com.hintguys.entity.IndexContent;
 import com.hintguys.entity.NewsArticle;
 import com.hintguys.entity.PageContent;
+import com.hintguys.entity.ReviewForm;
 import com.hintguys.form.AirlineContents;
 import com.hintguys.form.Categories;
 import com.hintguys.form.FaqsContents;
@@ -48,6 +50,9 @@ import com.hintguys.service.AdminContentService;
 @Service
 public class AdminServiceImpl implements AdminContentService {
 
+	@Value("${imgPath}")
+	public String path;
+	
 	@Autowired
 	private NewsArticleRepository articleRepository;
 	@Autowired 
@@ -78,7 +83,7 @@ public class AdminServiceImpl implements AdminContentService {
 	public static String UPLOAD_IMGFILE;
 
 	public void saveImgFile(HttpServletRequest request, MultipartFile file) {
-		UPLOAD_IMGFILE = String.valueOf(request.getServletContext().getRealPath("") + "\\resources\\admin\\images\\");
+		UPLOAD_IMGFILE = String.valueOf(request.getServletContext().getRealPath("") + path+"resources"+path+"admin"+path+"images"+path);
 		if (file.getSize() != 0) {
 			try {
 				Path path = Paths.get(UPLOAD_IMGFILE + file.getOriginalFilename());
@@ -255,18 +260,27 @@ public class AdminServiceImpl implements AdminContentService {
 	}
 
 	public void editNewCategories(int id, Categories categories, MultipartFile file) {
-		String imgUrl =null;
 		try {
-			if(file.getSize() ==0) {
+			if(file.getSize() == 0) {
 				 Category category = categoriesRepository.findById(id).get();
-				 imgUrl = category.getImgUrl();
+				  String imgUrl  = category.getImgUrl();
+				  categories.setImgUrl(imgUrl);
 			}
 		} catch (Exception e) {
 			 e.printStackTrace();
 		}
-		categories.setImgUrl(imgUrl);
 		Category category=mapper.convertValue(categories, Category.class);
 		categoriesRepository.save(category);
+	}
+
+	public ReviewForm editStatusReviewsForm(int id, String checkboxValue) {
+		ReviewForm reviewForm = reviewRepository.findById(id).get();
+		if (checkboxValue.contains("false") == false) {
+		    reviewForm.setReviewStatus("Active");
+		  } else {
+			  reviewForm.setReviewStatus("InActive");
+		  }
+		return reviewRepository.save(reviewForm);
 	}
 
 	

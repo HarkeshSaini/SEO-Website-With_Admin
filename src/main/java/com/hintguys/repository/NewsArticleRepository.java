@@ -21,7 +21,7 @@ public interface NewsArticleRepository extends JpaRepository<NewsArticle, Intege
 
 	List<NewsArticle> findByTitleUrl(String titleUrl);
 
-	List<NewsArticle> findTop10ByStatus(String status);
+	List<NewsArticle> findByStatus(String status);
 
 
 }

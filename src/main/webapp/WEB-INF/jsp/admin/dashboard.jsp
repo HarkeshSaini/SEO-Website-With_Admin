@@ -57,9 +57,9 @@
 	                       </div>
 	                       <div class="col-md-4 mb-3">
 	                          <form action="#/admin/" method="post">
-	                             <div class="heading_home"><a href="#/admin/homeContent"><span class="text_home">HomeContent</span></a></div>
+	                             <div class="heading_home"><a><span class="text_home">Disabled</span></a></div>
 	                             <div class="form-outline">
-	                                <select class="form-select form-control form-control-lg" aria-label="Default select example" required="required">
+	                                <select disabled class="form-select form-control form-control-lg" aria-label="Default select example" required="required">
 	                                   <option selected>Open this select menu</option>
 	                                   <option value="1">One</option>
 	                                   <option value="2">Two</option>
@@ -67,7 +67,7 @@
 	                                </select>
 	                             </div>
 	                             <div class="form-group mains">
-	                                <a class="btn btn-primary btn-lg btn-block main">Submit</a>
+	                                <a draggable="false" class="btn btn-primary btn-lg btn-block main">Submit</a>
 	                             </div>
 	                          </form>
 	                       </div>

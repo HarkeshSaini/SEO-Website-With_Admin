@@ -98,7 +98,7 @@ public class PageController {
 		revObj.setReviewUrl(reviewForm.getReviewUrl());
 		revObj.setReviewStatus("InActive");
 		revObj.setReviewRpyId("0");
-		revObj.setUserPhone("000");
+		revObj.setUserPhone(reviewForm.getUserPhone());
 		revObj.setReviewRpyId("0");
 		pageServiceImpl.saveReviewsForm(revObj);
 		return "Data save successfully !!!..";

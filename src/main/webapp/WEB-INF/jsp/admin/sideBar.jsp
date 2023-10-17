@@ -47,7 +47,7 @@
             <li class="sidebar-dropdown title"><a href="/admin/customerReviews"><i class="fa fa-address-card" aria-hidden="true"></i><span>Customer Reviews</span></a></li>
             <li class="sidebar-dropdown title"><a href="/admin/contactform"><i class="fa fa-chart-line"></i><span>Contact Form</span></a></li>
             <li class="sidebar-dropdown title"><a href="/admin/pageContent"><i class="fa fa-address-card" aria-hidden="true"></i><span>Page Content</span></a></li>
-            <li class="sidebar-dropdown title"><a href="/admin/faqs"><i class="fa fa-chart-line"></i><span>Faqs</span></a></li>
+            <li class="sidebar-dropdown title"><a href="/admin/faqs"><i class="fa fa-chart-line"></i><span>Faqs Question</span></a></li>
             <li class="sidebar-dropdown title"><a href="/logout"><i class="fa fa-power-off"></i><span>logout</span></a></li>
         </ul>
       </div>

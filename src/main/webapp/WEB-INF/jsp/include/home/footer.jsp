@@ -15,6 +15,8 @@
       
       <script src="/resources/pages/js/bootstrap.bundle.min.js"></script>
       <script src="/resources/pages/js/owl.carousel.min.js"></script>
+      
+      
       <script>
          $(document).ready(function () {
            $('.owl-carousel').owlCarousel({

@@ -83,7 +83,7 @@ public class BlogController {
 	public @ResponseBody ResponseEntity<?> categories(HttpServletRequest request){
 		List<Categories> findAllCategories = null;
 		try {
-			findAllCategories = articlesServiceImpl.findAllCategories();
+			findAllCategories = articlesServiceImpl.findAllCategories("Active");
 		} catch (Exception e) {
 			System.out.println("Index: 0, Size: 0");
 		}

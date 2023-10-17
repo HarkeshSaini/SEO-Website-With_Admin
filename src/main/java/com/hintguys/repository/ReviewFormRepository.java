@@ -1,5 +1,6 @@
 package com.hintguys.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,5 +12,7 @@ import com.hintguys.entity.ReviewForm;
 public interface ReviewFormRepository extends JpaRepository<ReviewForm, Integer> {
 
 	List<ReviewForm> findByReviewUrlAndReviewStatus(String pageUrl, String status);
+
+	ArrayList<ReviewForm> findByReviewStatus(String status);
 
 }

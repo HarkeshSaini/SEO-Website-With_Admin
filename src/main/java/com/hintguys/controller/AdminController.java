@@ -7,11 +7,13 @@ import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -380,9 +382,15 @@ public class AdminController {
 	@PostMapping("/editCategories/{id}")
 	private String editCategoriess(@PathVariable int id,Categories categories,HttpServletRequest request,MultipartFile file,Model model) {
 		this.adminServiceImpl.saveImgFile(request, file);
+		categories.setImgUrl(file.getOriginalFilename());
 		adminServiceImpl.editNewCategories(id,categories,file);
 		model.addAttribute("categories", "Categories successfully Edit !.");
 		return "admin/category/addContent";
+	}
+	
+	@PostMapping("/reviewStatus/{id}")
+	public @ResponseBody ResponseEntity<?> responseEntity(@PathVariable int id, @RequestBody String checkboxValue){
+		  return ResponseEntity.ok(adminServiceImpl.editStatusReviewsForm(id,checkboxValue));
 	}
 }
 

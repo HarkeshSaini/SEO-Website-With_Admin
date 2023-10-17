@@ -11,7 +11,7 @@ public interface NewsArticleService {
 	ArrayList<NewsArticles> findRecentNewsArticle(String status, String pageType);
 	ArrayList<NewsArticles> findNewsArticleByTitleUrlAndPageTypeAndStatus(String titleUrl, String pageType, String status);
 	ArrayList<NewsArticles> findAllNewsArticlePageTypeAndStatus(String status, String pageType);
-	List<Categories> findAllCategories();
+	List<Categories> findAllCategories(String status);
 	ArrayList<NewsArticles> getAllRecentNewsArticle(String status);
 
 }

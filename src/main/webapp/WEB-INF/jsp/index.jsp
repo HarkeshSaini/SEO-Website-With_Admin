@@ -59,309 +59,143 @@
                </div>
             </div>
          </div>
-         <!-- ======= About Section ======= -->
          <section id="about" class="about">
             <div class="container">
                <div class="row no-gutters">
                   <div class="image col-xl-8 ">
                      <h3>TOP BLOG & BEST OF LISTS</h3>
                      <div class="team reviews">
-                      <c:forEach var="data" items="${blogData}" begin="0" end="4">
+                      <c:forEach var="data" items="${blogData}">
                        <c:if test="${data.pageType eq 'blog'}">
                         <div class="member">
                            <img src="/resources/admin/images/${data.imgUrl}" class="img-fluid" alt="">
                            <div class="member-info">
                               <div class="member-info-content">
                                  <span>${data.extraTag}</span>
-                                 <h4>${data.heading}</h4>
+                                 <a href="/${data.pageType}/${data.titleUrl}"><h4>${data.heading}</h4></a>
                                  <p>${fn:escapeXml(fn:substring(data.content.replaceAll('<.*?>' , ""), 0, 100))}</p>
                               </div>
                            </div>
                         </div>
-                        </c:if>
+                       </c:if>
                      </c:forEach>   
-                        
                      </div>
                   </div>
                   <div class="col-xl-4">
                      <div class="content review-lists">
-                        <h3>Voluptatem dignissimos provident quasi</h3>
-                        <p>
-                           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                           dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                        </p>
+                         <p>${homeDetails.content}</p>
                         <div class="row antivirus-sec">
+                        <c:forEach var="airlines" items="${blogData}">
+                          <c:if test="${airlines.pageType eq 'airlines'}">
                            <div class="col-md-6 icon-box">
-                              <span>Antivirus</span>
-                              <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-                              <h4>Corporis voluptates sit</h4>
+                              <span>${fn:toUpperCase(airlines.pageType)}</span>
+                              <a href="/${airlines.pageType}/${airlines.titleUrl}"><h4>${airlines.heading}</h4></a>
+                              <h4>${airlines.extraTag}</h4>
                            </div>
-                           <div class="col-md-6 icon-box">
-                              <span>Antivirus</span>
-                              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-                              <h4>Ullamco laboris nisi</h4>
-                           </div>
-                           <div class="col-md-6 icon-box">
-                              <span>Antivirus</span>
-                              <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-                              <h4>Labore consequatur</h4>
-                           </div>
-                           <div class="col-md-6 icon-box">
-                              <span>Antivirus</span>
-                              <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
-                              <h4>Beatae veritatis</h4>
-                           </div>
+                           </c:if>
+                         </c:forEach>   
                         </div>
                      </div>
-                     <!-- End .content-->
                   </div>
                </div>
             </div>
          </section>
-         <!-- End About Section -->
-         <!-- ======= Services Section ======= -->
          <section id="services" class="services">
             <div class="container">
                <div class="section-title">
-                  <h2>Our Services</h2>
+                  <h2>Our Services Categories</h2>
                   <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
                      consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
                      in iste officiis commodi quidem hic quas.
                   </p>
                </div>
                <div class="row">
+                <c:forEach var="data" items="${categories}">
+                 <c:if test="${(data.categoryUrl !='blog') and (data.categoryUrl !='news')}">
                   <div class="col-lg-4 col-md-6 icon-box">
                      <div class="icon-inner">
-                        <div class="icon"><i class="bi bi-envelope"></i></div>
-                        <h4 class="title"><a href="">Email</a></h4>
-                        <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
-                           occaecati cupiditate non provident
-                        </p>
+                        <div class="icon"><img src="/resources/admin/images/${data.imgUrl}" class="categories_img" alt="categories"></div>
+                        <h4 class="title"><a href="/${data.categoryUrl}">${fn:toUpperCase(data.categoryUrl)}</a></h4>
+                        <p class="description">${data.categoryName}</p>
                      </div>
                   </div>
-                  <div class="col-lg-4 col-md-6 icon-box">
-                     <div class="icon-inner">
-                        <div class="icon"><i class="bi bi-printer"></i></div>
-                        <h4 class="title"><a href="">Printer</a></h4>
-                        <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                           commodo
-                           consequat tarad limino ata
-                        </p>
-                     </div>
-                  </div>
-                  <div class="col-lg-4 col-md-6 icon-box">
-                     <div class="icon-inner">
-                        <div class="icon"><i class="bi bi-laptop"></i></div>
-                        <h4 class="title"><a href="">Computer</a></h4>
-                        <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                           fugiat nulla pariatur
-                        </p>
-                     </div>
-                  </div>
-                  <div class="col-lg-4 col-md-6 icon-box">
-                     <div class="icon-inner">
-                        <div class="icon"><i class="bi bi-binoculars"></i></div>
-                        <h4 class="title"><a href="">Software</a></h4>
-                        <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                           mollit anim id est laborum
-                        </p>
-                     </div>
-                  </div>
-                  <div class="col-lg-4 col-md-6 icon-box">
-                     <div class="icon-inner">
-                        <div class="icon"><i class="bi bi-router"></i></div>
-                        <h4 class="title"><a href="">Router</a></h4>
-                        <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                           praesentium
-                           voluptatum deleniti atque
-                        </p>
-                     </div>
-                  </div>
-                  <div class="col-lg-4 col-md-6 icon-box">
-                     <div class="icon-inner">
-                        <div class="icon"><i class="bi bi-airplane"></i></div>
-                        <h4 class="title"><a href="">Airlines</a></h4>
-                        <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum
-                           soluta nobis est eligendi
-                        </p>
-                     </div>
-                  </div>
+                  </c:if>
+                 </c:forEach>  
                </div>
             </div>
          </section>
-         <!-- End Services Section -->
-         <!-- ======= Why Us Section ======= -->
          <section id="why-us" class="why-us">
             <div class="container">
                <div class="section-title">
-                  <h2>Tech tangled</h2>
+                  <h2>Recent comment of catgories</h2>
                   <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
                      consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
                      in iste officiis commodi quidem hic quas.
                   </p>
                </div>
                <div class="row">
-                  <div class="col-lg-4 col-md-6">
-                     <div class="box">
-                        <span>01</span>
-                        <h4>Lorem Ipsum</h4>
-                        <p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
-                     </div>
-                  </div>
+                 <c:forEach var="data" items="${reviewForms}" begin="0" end="5"> 
                   <div class="col-lg-4 mt-4 mt-lg-0 col-md-6">
                      <div class="box">
-                        <span>02</span>
-                        <h4>Repellat Nihil</h4>
-                        <p>Dolorem est fugiat occaecati voluptate velit esse. Dicta veritatis dolor quod et vel dire leno para
-                           dest
-                        </p>
+                        <span>04</span>
+                        <h4>${data.userName}</h4>
+                        <p>${data.reviewMessage}</p>
                      </div>
                   </div>
-                  <div class="col-lg-4 mt-4 mt-lg-0 col-md-6">
-                     <div class="box">
-                        <span>03</span>
-                        <h4> Ad ad velit qui</h4>
-                        <p>Molestiae officiis omnis illo asperiores. Aut doloribus vitae sunt debitis quo vel nam quis</p>
-                     </div>
-                  </div>
+                  </c:forEach>
                </div>
             </div>
          </section>
          <!-- End Why Us Section -->
          <div class="slider-main">
             <div class="container">
-               <h2>Looking Ahead</h2>
-               <div class="owl-carousel owl-theme">
+               <h2>Looking for Technology</h2>
+                <c:forEach var="technologys" items="${blogData}">
+                  <c:if test="${technologys.pageType eq 'technology'}">
+                  <div class="owl-carousel owl-theme">
                   <div class="item">
                      <div class="owl-inner-sec">
-                        <picture> <img src="/resources/pages/images/team-1.jpg" class="img-fluid" alt="logo"></picture>
+                        <picture> <img src="/resources/admin/images/${technologys.imgUrl}" class="img-fluid" alt="logo"></picture>
                         <div class="slide-content">
-                           <span>Mobility</span>
-                           <h3>It is a long established fact that a reader will be distracted
-                           </h3>
+                            <span>${fn:toUpperCase(technologys.extraTag)}</span>
+                           <a class="content_heading" href="/${technologys.pageType}/${technologys.titleUrl}"><h3>${technologys.heading}</h3></a>
                         </div>
                      </div>
+                   </div>
                   </div>
-                  <div class="item">
-                     <div class="owl-inner-sec">
-                        <picture> <img src="/resources/pages/images/team-2.jpg" class="img-fluid" alt="logo"></picture>
-                        <div class="slide-content">
-                           <span>Mobility</span>
-                           <h3>It is a long established fact that a reader will be distracted
-                           </h3>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="item">
-                     <div class="owl-inner-sec">
-                        <picture> <img src="/resources/pages/images/team-3.jpg" class="img-fluid" alt="logo"></picture>
-                        <div class="slide-content">
-                           <span>Mobility</span>
-                           <h3>It is a long established fact that a reader will be distracted
-                           </h3>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="item">
-                     <div class="owl-inner-sec">
-                        <picture> <img src="/resources/pages/images/team-4.jpg" class="img-fluid" alt="logo"></picture>
-                        <div class="slide-content">
-                           <span>Mobility</span>
-                           <h3>It is a long established fact that a reader will be distracted
-                           </h3>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="item">
-                     <div class="owl-inner-sec">
-                        <picture> <img src="/resources/pages/images/team-1.jpg" class="img-fluid" alt="logo"></picture>
-                        <div class="slide-content">
-                           <span>Mobility</span>
-                           <h3>It is a long established fact that a reader will be distracted
-                           </h3>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+                </c:if>
+              </c:forEach> 
             </div>
          </div>
          <!-- ======= Team Section ======= -->
          <section id="team" class="team">
             <div class="container">
                <div class="section-title">
-                  <h2>What We're Into</h2>
+                  <h2>What We're Into insurance</h2>
                   <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
                      consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
                      in iste officiis commodi quidem hic quas.
                   </p>
                </div>
                <div class="row">
+                <c:forEach var="insurances" items="${blogData}">
+                  <c:if test="${insurances.pageType eq 'insurance'}">
                   <div class="col-xl-3 col-lg-4 col-md-6">
-                     <a href="#" class="anchors">
+                     <a href="/${insurances.pageType}/${insurances.titleUrl}" class="anchors">
                         <div class="member">
-                           <img src="/resources/pages/images/portfolio-1.jpg" class="img-fluid" alt="">
+                           <img src="/resources/admin/images/${insurances.imgUrl}" class="img-fluid" alt="">
                            <div class="member-info">
                               <div class="member-info-content">
-                                 <span>Phones & Assessories</span>
-                                 <h4>Where does it come from?</h4>
-                                 <p>It is a long established fact that a reader will be distracted by the readable content of a page
-                                    when looking at its
-                                    layout.
-                                 </p>
+                                 <span>${fn:toUpperCase(insurances.extraTag)}</span>
+                                 <h4>${insurances.heading}</h4>
+                                 <p>${fn:escapeXml(fn:substring(insurances.content.replaceAll('<.*?>' , ""), 0, 115))}</p>
                               </div>
                            </div>
                         </div>
                      </a>
-                  </div>
-                  <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.1s">
-                     <a href="#" class="anchors">
-                        <div class="member">
-                           <img src="/resources/pages/images/portfolio-2.jpg" class="img-fluid" alt="">
-                           <div class="member-info">
-                              <div class="member-info-content">
-                                 <span>Phones & Assessories</span>
-                                 <h4>Sarah Jhonson</h4>
-                                 <p>It is a long established fact that a reader will be distracted by the readable content of a page
-                                    when looking at its
-                                    layout.
-                                 </p>
-                              </div>
-                           </div>
-                        </div>
-                     </a>
-                  </div>
-                  <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s">
-                     <a href="#" class="anchors"></a>
-                     <div class="member">
-                        <img src="/resources/pages/images/portfolio-3.jpg" class="img-fluid" alt="">
-                        <div class="member-info">
-                           <div class="member-info-content">
-                              <span>Phones & Assessories</span>
-                              <h4>William Anderson</h4>
-                              <p>It is a long established fact that a reader will be distracted by the readable content of a page
-                                 when looking at its
-                                 layout.
-                              </p>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
-                     <a href="#" class="anchors"></a>
-                     <div class="member">
-                        <img src="/resources/pages/images/portfolio-4.jpg" class="img-fluid" alt="">
-                        <div class="member-info">
-                           <div class="member-info-content">
-                              <span>Phones & Assessories</span>
-                              <h4>Amanda Jepson</h4>
-                              <p>It is a long established fact that a reader will be distracted by the readable content of a page
-                                 when looking at its
-                                 layout.
-                              </p>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+                  </div> 
+                </c:if>
+                </c:forEach>  
                </div>
             </div>
          </section>

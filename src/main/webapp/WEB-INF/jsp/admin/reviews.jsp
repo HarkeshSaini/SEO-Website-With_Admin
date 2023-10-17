@@ -37,7 +37,12 @@
 					            <td>${content.userName}</td>
 					            <td>${content.userEmail}</td>
 					            <td>${content.userPhone}</td>
-					            <td>${content.reviewStatus}</td>
+					       		<c:if test="${content.reviewStatus eq 'Active'}">
+					       		 <td><label class="switch"><input type="checkbox" class="switchinp" data-id="${content.id}" checked><span class="slider round"></span></label></td>
+					      		</c:if>
+					      		<c:if test="${content.reviewStatus eq 'InActive'}">
+					       		 <td><label class="switch"><input type="checkbox" class="switchinp" data-id="${content.id}"><span class="slider round"></span></label></td>
+					      		</c:if>
 					        </tr>
 					     </c:forEach>
 					    </tbody>
@@ -55,5 +60,31 @@
     	} );
      </script>
      <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+	<script>
+	$(document).ready(function() {
+		$('.switchinp').change(function() {
+			var getid = $(this).data('id')
+			var getprop = $(this).prop('checked');
+			var settings = {
+				"url": "/admin/reviewStatus/" + getid,
+				"method": "POST",
+				"timeout": 0,
+				"headers": {
+					"Content-Type": "application/json"
+				},
+				"data": JSON.stringify({
+					"checkboxValue": getprop
+				}),
+			};
+			$.ajax(settings).done(function(response) {
+				if(getprop == true) {
+					alert("status Active")
+				} else{
+					alert("status InActive")
+				}
+			});
+		});
+	});
+	</script>
 </body>
 </html>

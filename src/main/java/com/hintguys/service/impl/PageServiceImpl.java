@@ -120,5 +120,17 @@ public class PageServiceImpl implements PageService {
 		}
 		return arrayList.get(0);
 	}
+ 
+
+	public List<ReviewForms> getAllCategoriesRecentComment(String status) {
+		ArrayList<ReviewForm> details = formRepository.findByReviewStatus(status);
+		ArrayList<ReviewForms> arrayList = new ArrayList<ReviewForms>();
+		if (!details.isEmpty()) {
+			for (ReviewForm content : details) {
+				arrayList.add(modelMapper.map(content, ReviewForms.class));
+			}
+		}
+		return arrayList;
+	}
 
 }

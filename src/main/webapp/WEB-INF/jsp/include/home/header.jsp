@@ -41,7 +41,7 @@
    	$.ajax(settings).done(
    			function(response) {
    				var createList = $.map(response, function(item, index) {
-   					return '<li><a href="'+item.categoryUrl+'">' + item.categoryName + '</a></li>'
+   					return '<li><a href="/'+item.categoryUrl+'">' + item.categoryName + '</a></li>'
    				});
    				$('#categoriesul').html(createList)
    			});
