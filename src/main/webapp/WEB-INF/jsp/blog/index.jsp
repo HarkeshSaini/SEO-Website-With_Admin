@@ -30,25 +30,7 @@
 	        </nav>
 	      </div>
 	    </div>
-	   <div class="slider-blog">
-      <div class="container">
-        <h2>Latest Tech ${fn:toUpperCase(indexPage.pageType)}</h2>
-        <div class="owl-carousel owl-theme" id="blog-news">
-          <c:forEach var="data" items="${recentArticle}">  
-          <div class="item">
-            <div class="owl-inner-sec">
-              <picture><img src="/resources/admin/images/${data.imgUrl}" class="img-fluid" alt="logo"></picture>
-              <div class="slide-content">
-                <span>${fn:toUpperCase(indexPage.pageType)}</span>
-                <a class="content_heading" href="/${indexPage.pageType}/${data.titleUrl}">${(fn:substring(data.heading, 0, 45))}</a>
-              </div>
-            </div>
-          </div>
-          </c:forEach> 
-        </div>
-      </div>
-    </div>
-    <div class="blog_section">
+       <div class="blog_section">
       <div class="container">
         <div class="text-center heading_RWM">
           <h2 class="main_heading"><span><label>Our<i></i></label><strong> ${fn:toUpperCase(indexPage.pageType)}</strong></span></h2>

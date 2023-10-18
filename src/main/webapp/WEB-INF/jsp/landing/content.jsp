@@ -48,7 +48,7 @@
                            </div>
                         </div>
                         <div class="col-vvxs-12 col-vxs-12 col-xs-12 col-sm-8 col-lg-8">
-                           <div class="who_we_right">${data.content}
+                           <div class="who_we_right blog">${data.content}
                              <jsp:include page="../landing/reviews.jsp"></jsp:include>
                            </div>
                         </div>

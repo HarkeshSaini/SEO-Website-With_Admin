@@ -35,20 +35,17 @@ public class BlogController {
 	public String cancelation(@PathVariable String blogCategories,HttpServletRequest request, Model model) {
 		List<HomeContents> homeDetails = null;
 		List<NewsArticles> blogData = null;
-		List<NewsArticles> recentArticle = null;
 		IndexContents indexContents=null;
 		try {
-			indexContents=pageServiceImpl.findByPageTypeIndexContent(blogCategories);
+			indexContents = pageServiceImpl.findByPageTypeIndexContent(blogCategories);
 			homeDetails = pageServiceImpl.findHomeContentDetails();
-			recentArticle = articlesServiceImpl.findRecentNewsArticle("Active", blogCategories);
 			blogData = this.articlesServiceImpl.findAllNewsArticlePageTypeAndStatus(blogCategories, "Active");
 			if (blogData.size() == 0) {
 				return "404-error";
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Index: 0, Size: 0");
 		}
-		model.addAttribute("recentArticle", recentArticle);
 		model.addAttribute("blogData", blogData);
 		model.addAttribute("indexPage", indexContents);
 		model.addAttribute("homeDetails", homeDetails.get(0));
@@ -64,6 +61,7 @@ public class BlogController {
 		try {
 			recentArticle = articlesServiceImpl.findRecentNewsArticle("Active", blogCategories);
 			articles = articlesServiceImpl.findNewsArticleByTitleUrlAndPageTypeAndStatus(titleUrl, blogCategories, "Active");
+			model.addAttribute("technologys", articlesServiceImpl.findRecentNewsArticle("Active", "technology"));
 			faqsContents = pageServiceImpl.findByUrlAndFaqStatus(titleUrl, "Active");
 			homeDetails = pageServiceImpl.findHomeContentDetails();
 			if (articles.size() == 0) {

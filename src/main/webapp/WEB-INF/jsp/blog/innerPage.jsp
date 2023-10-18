@@ -31,7 +31,27 @@
                   </nav>
                </div>
             </div>
-            <div class="blog_detail blog">
+            <div class="technology">
+             <div class="slider-blog">
+		      <div class="container">
+		        <h2>Latest Technology</h2>
+		        <div class="owl-carousel owl-theme" id="blog-news">
+		         <c:forEach var="tech" items="${technologys}">  
+		          <div class="item">
+		            <div class="owl-inner-sec">
+		              <picture><img src="/resources/admin/images/${tech.imgUrl}" class="img-fluid" alt="logo"></picture>
+		              <div class="slide-content">
+		                <span>${fn:toUpperCase(tech.pageType)}</span>
+		                <a class="content_heading" href="/${tech.pageType}/${tech.titleUrl}">${(fn:substring(tech.heading, 0, 45))}</a>
+		              </div>
+		            </div>
+		           </div>
+		          </c:forEach> 
+		        </div>
+		      </div>
+		    </div>
+            </div>
+            <div class="blog_detail blog" style="margin-top: 60px;">
                <div class="container">
                   <div class="row">
                      <div class="col-lg-4">

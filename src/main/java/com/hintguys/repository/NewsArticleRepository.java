@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.hintguys.entity.NewsArticle;
-import com.hintguys.form.NewsArticles;
 
 @Repository
 public interface NewsArticleRepository extends JpaRepository<NewsArticle, Integer> {
