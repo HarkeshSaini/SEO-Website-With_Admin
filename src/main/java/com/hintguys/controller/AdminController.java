@@ -45,6 +45,12 @@ public class AdminController {
 	private String dashboard(HttpServletRequest request,Model model) {
 		List<HomeContents> homeContents = this.adminServiceImpl.findAllHomeContent();
 		List<IndexContents> indexContents = this.adminServiceImpl.findAllIndexContent();
+		try {
+			List<Categories> categories = adminServiceImpl.findAllCategories();
+			model.addAttribute("categories", categories);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		model.addAttribute("contents", homeContents);
 		model.addAttribute("index", indexContents);
 		return "admin/dashboard";
@@ -56,6 +62,12 @@ public class AdminController {
 		List<IndexContents> indexContents = this.adminServiceImpl.findAllIndexContent().stream().filter(x -> x.getPageType().equals(indexs.getPageType())).collect(Collectors.toList());
 		List<HomeContents> contents = this.adminServiceImpl.findAllHomeContent();
 		List<IndexContents> index = this.adminServiceImpl.findAllIndexContent();
+		try {
+			List<Categories> categories = adminServiceImpl.findAllCategories();
+			model.addAttribute("categories", categories);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		model.addAttribute("homeContent", homeContents);
 		model.addAttribute("contents", contents);
 		model.addAttribute("index", index);
@@ -143,13 +155,12 @@ public class AdminController {
 
 	@GetMapping("/addArticle")
 	private String addArticle(HttpServletRequest request, Model model) {
-		List<Categories> categories= null;
 		try {
-			categories=adminServiceImpl.findAllCategories();
+			List<IndexContents> indexPage = adminServiceImpl.findAllIndexContent();
+			model.addAttribute("categories", indexPage);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		model.addAttribute("categories", categories);
 		model.addAttribute("article", "Add new article");
 		return "admin/article/addArticle";
 	}
@@ -164,6 +175,11 @@ public class AdminController {
 			}
 		} catch (Exception ex) {
 			//ex.printStackTrace();
+		}try {
+			List<IndexContents> indexPage = adminServiceImpl.findAllIndexContent();
+			model.addAttribute("categories", indexPage);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		this.adminServiceImpl.saveImgFile(request, file);
 		this.adminServiceImpl.saveAllNewsArticle(newsArticle, file, date);
@@ -173,13 +189,12 @@ public class AdminController {
 
 	@GetMapping("/editNewsArticle/{id}")
 	private String editNewsArticle(@PathVariable Integer id, Model model) {
-		List<Categories> categories= null;
 		try {
-			categories=adminServiceImpl.findAllCategories();
+			List<IndexContents> indexPage = adminServiceImpl.findAllIndexContent();
+			model.addAttribute("categories", indexPage);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		model.addAttribute("categories", categories);
 		model.addAttribute("id", id);
 		model.addAttribute("command", this.adminServiceImpl.findByIdNewsArticle(id));
 		model.addAttribute("article", "Edit Content");

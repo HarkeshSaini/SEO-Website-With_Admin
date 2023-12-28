@@ -29,7 +29,7 @@
                         </div>
                         <div class="col-md-4 mb-3">
                            <div class="form-outline">
-                              <input type="text" name="description" class="form-control form-control-lg" placeholder="Enter Title"/>
+                              <input type="text" name="description" class="form-control form-control-lg" placeholder="Enter Description"/>
                            </div>
                         </div>
                         <div class="col-md-4 mb-3">

@@ -76,7 +76,7 @@
                                  <select id="pageType" name="pageType" class="form-select form-control form-control-lg" aria-label="Default select example" required="required">
 	                                 <option selected>Select PageType</option>
 	                                 <c:forEach var="data" items="${categories}">
-	                                  <option value="${data.categoryUrl}">${data.categoryName}</option> 
+	                                  <option value="${data.pageType}">${data.pageType}</option> 
 	                                 </c:forEach>  
 	                             </select>
                               </div>

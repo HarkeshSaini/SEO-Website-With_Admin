@@ -1,20 +1,15 @@
 package com.hintguys.controller;
 
-import java.awt.PageAttributes.MediaType;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import javax.validation.constraints.Size;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -37,9 +32,9 @@ public class HomeController {
 			model.addAttribute("airlinesData", articlesServiceImpl.findAllNewsArticlePageTypeAndStatus("airlines", "Active"));
 			model.addAttribute("technologyData", articlesServiceImpl.findAllNewsArticlePageTypeAndStatus("technology", "Active"));
 			model.addAttribute("insuranceData", articlesServiceImpl.findAllNewsArticlePageTypeAndStatus("insurance", "Active"));
-			model.addAttribute("homeDetails", serviceImpl.findHomeContentDetails().get(0));
 			model.addAttribute("categories", articlesServiceImpl.findAllCategories("Active"));
 			model.addAttribute("reviewForms", serviceImpl.getAllCategoriesRecentComment("Active"));
+			model.addAttribute("homeDetails", serviceImpl.findHomeContentDetails().get(0));
 			request.getSession().setAttribute("code", request.getRequestURI());
 			request.getSession().setAttribute("langCode", "EN");
 		} catch (Exception e) {

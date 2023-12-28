@@ -106,7 +106,7 @@ public class NewsArticlesServiceImpl implements NewsArticleService {
 	}
 
 	public List<Categories> findAllCategories(String status) {
-		List<Category> findAll = categoriesRepository.findByStatus(status);
+		List<Category> findAll = categoriesRepository.findByActiveCategory();
 		ArrayList<Categories> arrayList = new ArrayList<Categories>();
 		for (Category category : findAll) {
 			Categories categories = new Categories();

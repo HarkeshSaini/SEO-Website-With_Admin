@@ -30,11 +30,11 @@
                      <img src="/resources/pages/images/banner1.jpg" alt="banner" />
                   </c:if>
                   <div class="contact-content">
-                     <span>About Us</span>
+                     <span>${data.content}</span>
                      <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                           <li class="breadcrumb-item active" aria-current="page">About Us</li>
+                           <li class="breadcrumb-item active" aria-current="page">${data.heading}</li>
                         </ol>
                      </nav>
                   </div>

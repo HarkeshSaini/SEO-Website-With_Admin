@@ -11,8 +11,9 @@
       </footer>
       
       <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-      <script src="/resources/pages/js/main.js"></script>
       
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <script src="/resources/pages/js/main.js"></script>
       <script src="/resources/pages/js/bootstrap.bundle.min.js"></script>
       <script src="/resources/pages/js/owl.carousel.min.js"></script>
       

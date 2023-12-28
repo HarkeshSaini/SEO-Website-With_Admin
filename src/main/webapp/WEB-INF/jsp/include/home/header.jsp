@@ -2,8 +2,7 @@
    <div
       class="container d-flex align-items-center justify-content-between">
       <div class="logo">
-         <a href="/">
-            <!--  <img src="/resources/pages/images/logo.png" class="img-fluid" alt="logo"> -->Hintguys
+         <a href="/"><img src="/resources/pages/images/logo.jpg" class="img-fluid" alt="logo">
          </a>
       </div>
       <nav id="navbar" class="navbar">

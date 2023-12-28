@@ -1,5 +1,6 @@
 package com.hintguys.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,22 +34,17 @@ public class BlogController {
 
 	@GetMapping("/{blogCategories}")
 	public String cancelation(@PathVariable String blogCategories,HttpServletRequest request, Model model) {
-		List<HomeContents> homeDetails = null;
 		List<NewsArticles> blogData = null;
 		IndexContents indexContents=null;
 		try {
 			indexContents = pageServiceImpl.findByPageTypeIndexContent(blogCategories);
-			homeDetails = pageServiceImpl.findHomeContentDetails();
 			blogData = this.articlesServiceImpl.findAllNewsArticlePageTypeAndStatus(blogCategories, "Active");
-			if (blogData.size() == 0) {
-				return "404-error";
-			}
+			model.addAttribute("homeDetails", pageServiceImpl.findHomeContentDetails().get(0));
 		} catch (Exception e) {
-			System.out.println("Index: 0, Size: 0");
-		}
+			 e.printStackTrace();
+		} 
 		model.addAttribute("blogData", blogData);
 		model.addAttribute("indexPage", indexContents);
-		model.addAttribute("homeDetails", homeDetails.get(0));
 		return "blog/index";
 	}
 
@@ -57,23 +53,24 @@ public class BlogController {
 		List<NewsArticles> recentArticle = null;
 		List<NewsArticles> articles = null;
 		List<FaqsContents> faqsContents = null;
-		List<HomeContents> homeDetails = null;
 		try {
 			recentArticle = articlesServiceImpl.findRecentNewsArticle("Active", blogCategories);
 			articles = articlesServiceImpl.findNewsArticleByTitleUrlAndPageTypeAndStatus(titleUrl, blogCategories, "Active");
 			model.addAttribute("technologys", articlesServiceImpl.findRecentNewsArticle("Active", "technology"));
 			faqsContents = pageServiceImpl.findByUrlAndFaqStatus(titleUrl, "Active");
-			homeDetails = pageServiceImpl.findHomeContentDetails();
+			model.addAttribute("homeDetails", pageServiceImpl.findHomeContentDetails().get(0));
+		} catch (Exception ex) {
+			 ex.printStackTrace();
+		} try {
 			if (articles.size() == 0) {
 				return "404-error";
 			}
-		} catch (Exception ex) {
+		} catch (Exception e) {
 			return "404-error";
 		}
 		model.addAttribute("blogFaqs", faqsContents);
 		model.addAttribute("blogTitleData", articles);
 		model.addAttribute("recentArticle", recentArticle);
-		model.addAttribute("homeDetails", homeDetails.get(0));
 		return "blog/innerPage";
 	}
 	

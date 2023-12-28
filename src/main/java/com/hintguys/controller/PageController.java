@@ -52,16 +52,15 @@ public class PageController {
 
 	@GetMapping("/faqs")
 	public String faqs(HttpServletRequest request, Model model) {
-		HomeContents homeDetails = null;
 		List<FaqsContents> faqsContents = null;
 		String pageUrl = request.getRequestURI().replace("/", "");
 		try {
-			homeDetails = pageServiceImpl.findHomeContentDetails().get(0);
 			faqsContents = pageServiceImpl.findByUrlAndFaqStatus(pageUrl, "Active");
+			model.addAttribute("homeDetails", pageServiceImpl.findHomeContentDetails().get(0));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		model.addAttribute("homeDetails", homeDetails);
+		
 		model.addAttribute("blogTitleData", faqsContents);
 		return "landing/faqs";
 	}

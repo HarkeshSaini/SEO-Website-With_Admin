@@ -45,8 +45,8 @@
 	                             <div class="form-outline">
 	                                <select name="pageType" class="form-select form-control form-control-lg" aria-label="Default select example" required="required">
 	                                   <option selected>Select Content Type</option>
-	                                   <c:forEach var="content" items="${index}">
-	                                      <option value="${content.pageType}">${content.pageType}</option>
+	                                   <c:forEach var="content" items="${categories}">
+	                                      <option value="${content.categoryUrl}">${content.categoryName}</option>
 	                                   </c:forEach>
 	                                </select>
 	                             </div>
