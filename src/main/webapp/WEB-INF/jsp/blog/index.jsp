@@ -41,10 +41,11 @@
             <div class="solution_cards_box">
               <div class="solution_card">
                 <div class="solu_description">
-                <picture><img src="/resources/admin/images/${data.imgUrl}" height="280px" alt="picture" /></picture>
-                  <span>${data.extraTag}</span>
+               <!--  <picture><img src="/resources/admin/images/${data.imgUrl}" height="280px" alt="picture" /></picture> -->
+                  <!-- <span>${data.extraTag}</span> -->
                   <a href="/${indexPage.pageType}/${data.titleUrl}"><h3>${data.heading}</h3></a>
                   <p>${fn:escapeXml(fn:substring(data.content.replaceAll('<.*?>' , ""), 0, 115))}</p>
+                  <a href="/${indexPage.pageType}/${data.titleUrl}" class="mores">More Blogs <i class="bi bi-arrow-right-short"></i></a>
                 </div>
               </div>
             </div>

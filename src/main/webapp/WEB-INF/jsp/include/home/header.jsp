@@ -1,9 +1,9 @@
+<style>li.dropdown.dropdown-active ul { display: block;}</style>
 <header id="header" class="fixed-top d-flex align-items-center">
    <div
       class="container d-flex align-items-center justify-content-between">
       <div class="logo">
-         <a href="/"><img src="/resources/pages/images/logo.jpg" class="img-fluid" alt="logo">
-         </a>
+         <a href="/"><img src="/resources/pages/images/logo.svg" class="img-fluid" alt="logo"></a>
       </div>
       <nav id="navbar" class="navbar">
          <ul>
@@ -45,4 +45,17 @@
    				$('#categoriesul').html(createList)
    			});
    })
+</script>
+
+<script>
+   $(document).ready(function(){
+$(".mobile-nav-toggle").click(function(){
+   $("#navbar").toggleClass("navbar-mobile");
+});
+
+$(".dropdown a").click(function(){
+   $(this).closest("li.dropdown").toggleClass("dropdown-active"), $(this).closest("li.dropdown").siblings().removeClass("dropdown-active")
+});
+
+   });
 </script>

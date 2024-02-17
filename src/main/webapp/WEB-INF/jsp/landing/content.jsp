@@ -30,7 +30,7 @@
                      <img src="/resources/pages/images/banner1.jpg" alt="banner" />
                   </c:if>
                   <div class="contact-content">
-                     <span>${data.content}</span>
+                     <span>${data.heading}</span>
                      <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                            <li class="breadcrumb-item"><a href="#">Home</a></li>

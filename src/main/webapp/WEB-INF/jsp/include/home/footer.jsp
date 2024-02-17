@@ -21,21 +21,35 @@
       <script>
          $(document).ready(function () {
            $('.owl-carousel').owlCarousel({
-             loop: true,
+             loop: false,
              margin: 10,
              nav: true,
              responsive: {
                0: { items: 1 },
-               600: { items: 3 },
+               600: { items: 2 },
                1000: { items: 4 }
              }
            })
          });
       </script>
-      <script>
+<!--       <script>
          $(document).ready(function () {
            $(".mobile-nav-toggle").click(function () {
              $("")
            });
          });
-      </script>
+      </script> -->
+      
+<!--       <script>
+   $(document).ready(function(){
+$(".mobile-nav-toggle").click(function(){
+   $("#navbar").toggleClass("navbar-mobile");
+});
+
+$(".dropdown a").click(function(){
+   $(this).closest("li.dropdown").toggleClass("dropdown-active"), $(this).closest("li.dropdown").siblings().removeClass("dropdown-active")
+});
+
+   });
+</script> -->
+      

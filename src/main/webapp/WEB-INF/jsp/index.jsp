@@ -32,28 +32,28 @@
                      <div class="count-box">
                         <i class="bi bi-emoji-smile"></i>
                         <span class="purecounter">232</span>
-                        <p><strong>Happy Clients</strong> consequuntur quae</p>
+                        <p><strong>Happy Clients</strong> Explore the Strategies</p>
                      </div>
                   </div>
                   <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
                      <div class="count-box">
                         <i class="bi bi-journal-richtext"></i>
                         <span class="purecounter">521</span>
-                        <p><strong>Projects</strong> adipisci atque cum quia aut</p>
+                        <p><strong>Projects</strong> Focus on building Report</p>
                      </div>
                   </div>
                   <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
                      <div class="count-box">
                         <i class="bi bi-headset"></i>
                         <span class="purecounter">1463</span>
-                        <p><strong>Hours Of Support</strong> aut commodi quaerat</p>
+                        <p><strong>Hours Of Support</strong>  Monday through Friday</p>
                      </div>
                   </div>
                   <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
                      <div class="count-box">
                         <i class="bi bi-people"></i>
                         <span class="purecounter">15</span>
-                        <p><strong>Hard Workers</strong> rerum asperiores dolor</p>
+                        <p><strong>Hard Workers</strong> Boost Customer Satisfaction</p>
                      </div>
                   </div>
                </div>
@@ -66,6 +66,7 @@
                      <h3>TOP BLOG & BEST OF LISTS</h3>
                      <div class="team reviews">
                         <c:forEach var="data" items="${blogData}" begin="0" end="3">
+                        <div class="member-mains">
                            <div class="member">
                               <img src="/resources/admin/images/${data.imgUrl}" class="img-fluid" alt="">
                               <div class="member-info">
@@ -78,11 +79,13 @@
                                  </div>
                               </div>
                            </div>
+                           </div>
                         </c:forEach>
                      </div>
                   </div>
                   <div class="col-xl-4">
                      <div class="content review-lists">
+                        <h1>HintGuys</h1>
                         <p>${homeDetails.content}</p>
                         <div class="row antivirus-sec">
                            <c:forEach var="airlines" items="${airlinesData}" begin="0" end="6">
@@ -104,7 +107,7 @@
             <div class="container">
                <div class="section-title">
                   <h2>Our Services Categories</h2>
-                  <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas. </p>
+                  <p>You will enjoy our best services with different categories you can support to find with us after sending your request through an email. If you want to enjoy our services by going through the different categories, you must connect with us and get the complete information you are looking for.</p>
                </div>
                <div class="row">
                   <c:forEach var="data" items="${categories}" begin="0" end="7">
@@ -125,7 +128,7 @@
             <div class="container">
                <div class="section-title">
                   <h2>Recent comment of catgories</h2>
-                  <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas. </p>
+                  <p>When you need to share your queries, feedback, or suggestions regarding content we have submitted through different people, you must select content after the subscription. If you are a subscribed user, you will get complete access to our website and manage your blogs and articles in a significant sequence.</p>
                </div>
                <div class="row">
                   <c:forEach var="data" items="${reviewForms}" begin="0" end="5">
@@ -144,8 +147,9 @@
          <div class="slider-main">
             <div class="container">
                <h2>Looking for Technology</h2>
+                <div class="owl-carousel owl-theme">
                <c:forEach var="technologys" items="${technologyData}" begin="0" end="5">
-                  <div class="owl-carousel owl-theme">
+                 
                      <div class="item">
                         <div class="owl-inner-sec">
                            <picture> <img src="/resources/admin/images/${technologys.imgUrl}" class="img-fluid" alt="logo"></picture>
@@ -157,8 +161,9 @@
                            </div>
                         </div>
                      </div>
-                  </div>
+                
                </c:forEach>
+                 </div>
             </div>
          </div>
          <!-- ======= Team Section ======= -->
@@ -166,7 +171,7 @@
             <div class="container">
                <div class="section-title">
                   <h2>What We're Into insurance</h2>
-                  <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas. </p>
+                  <p>If you need help with your health and want to study different types of illness and treatment, get information from our blogs and articles.</p>
                </div>
                <div class="row">
                   <c:forEach var="insurances" items="${insuranceData}" begin="0" end="3">

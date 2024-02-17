@@ -9,8 +9,7 @@ import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,21 +25,13 @@ public class ErrorsController implements ErrorController {
 		this.errorAttributes = errorAttributes;
 	}
 
-	@RequestMapping(value = ERROR_PATH, produces = "text/html")
+	@GetMapping(value = ERROR_PATH, produces = "text/html")
 	public ModelAndView errorHtml(HttpServletRequest request, WebRequest webRequest) {
-		return new ModelAndView("redirect:/errorCode", getErrorAttributes(request, false, webRequest));
+		return new ModelAndView("/404-error", getErrorAttributes(request, false, webRequest));
 	}
 
-	@RequestMapping(value = "/errorCode", method = RequestMethod.GET)
-	public ModelAndView errorCode(HttpServletRequest request) {
-		ModelAndView andView = new ModelAndView();
-		andView.setViewName("redirect:/");
-		return andView;
-	}
-
-	@RequestMapping(value = ERROR_PATH)
-	@ResponseBody
-	public ResponseEntity<Map<String, Object>> error(HttpServletRequest request, WebRequest webRequest) {
+	@GetMapping(path = ERROR_PATH)
+	public @ResponseBody ResponseEntity<Map<String, Object>> error(HttpServletRequest request, WebRequest webRequest) {
 		Map<String, Object> body = getErrorAttributes(request, getTraceParameter(request), webRequest);
 		HttpStatus status = getStatus(request);
 		return new ResponseEntity<Map<String, Object>>(body, status);

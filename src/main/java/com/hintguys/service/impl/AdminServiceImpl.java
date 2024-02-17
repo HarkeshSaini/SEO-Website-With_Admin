@@ -283,5 +283,20 @@ public class AdminServiceImpl implements AdminContentService {
 		return reviewRepository.save(reviewForm);
 	}
 
+	public Object findByIdIndexContent(int id) {
+		return indexContentRepositroy.findById(id);
+	}
+
+	
+	public void editIndexContent(int id, IndexContent indexContent, MultipartFile file, HttpServletRequest request) {
+		indexContent.setImgUrl(file.getOriginalFilename());
+		if (file.getSize() == 0) {
+			Optional<IndexContent> content = indexContentRepositroy.findById(id);
+			indexContent.setImgUrl(content.get().getImgUrl());
+		}
+		IndexContent content = mapper.convertValue(indexContent, IndexContent.class);
+		indexContentRepositroy.save(content);
+	}
+
 	
 }

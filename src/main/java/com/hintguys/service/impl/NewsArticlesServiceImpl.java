@@ -52,7 +52,7 @@ public class NewsArticlesServiceImpl implements NewsArticleService {
 
 	@Override
 	public ArrayList<NewsArticles> findRecentNewsArticle(String status, String pageType) {
-		List<NewsArticle> details = articleRepository.findTop10ByStatusAndPageType(status, pageType);
+		List<NewsArticle> details = articleRepository.findTop6ByStatusAndPageType(status, pageType);
 		ArrayList<NewsArticles> arrayList = new ArrayList<NewsArticles>();
 		for (NewsArticle newsArticle : details) {
 			NewsArticles articles = new NewsArticles();

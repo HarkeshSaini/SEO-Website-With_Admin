@@ -97,7 +97,7 @@
 	              <c:forEach var="data" items="${indexContents}">
 	                 <div class="main_con sits container">
 	                    <ul class="list-group main">
-	                       <li class="list-group-item active"><< Back</li>
+	                       <li class="list-group-item active"><a href="/admin/editIndexContent/${data.id}" class="edit_data"><i class='far fa-edit fa-9x'></i> Edit Index_Content</a></li>
 	                       <li class="list-group-item main"><img src="/resources/admin/images/${data.imgUrl}" style="width: 100%; height: 200px"></li>
 	                       <li class="list-group-item">${data.title}</li>
 	                       <li class="list-group-item">${data.description}</li>

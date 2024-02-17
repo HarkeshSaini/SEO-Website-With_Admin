@@ -21,7 +21,7 @@
             <div class="contact-banner">
                <img src="/resources/pages/images/banner1.jpg" alt="banner" />
                <div class="contact-content">
-                  <span>${data.heading}</span>
+                  <h1>${data.heading}</h1>
                   <nav aria-label="breadcrumb">
                      <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -36,7 +36,7 @@
 		      <div class="container">
 		        <h2>Latest Technology</h2>
 		        <div class="owl-carousel owl-theme" id="blog-news">
-		         <c:forEach var="tech" items="${technologys}">  
+	         <c:forEach var="tech" items="${technologys}">  
 		          <div class="item">
 		            <div class="owl-inner-sec">
 		              <picture><img src="/resources/admin/images/${tech.imgUrl}" class="img-fluid" alt="logo"></picture>
@@ -46,19 +46,21 @@
 		              </div>
 		            </div>
 		           </div>
-		          </c:forEach> 
+		          </c:forEach>  
+		          
+		          
 		        </div>
 		      </div>
 		    </div>
             </div>
-            <div class="blog_detail blog" style="margin-top: 60px;">
+            <div class="blog_detail blog" style="margin-top: 30px;">
                <div class="container">
                   <div class="row">
                      <div class="col-lg-4">
                         <div class="sidebar">
                            <h3 class="sidebar-title">IN THIS ARTICLE</h3>
                            <div class="sidebar-item recent-posts">
-                           <c:forEach var="datas" items="${recentArticle}" >
+                           <c:forEach var="datas" items="${recentArticle}" begin="0" end="6">
                               <div class="post-item clearfix">
                                  <img src="/resources/admin/images/${datas.imgUrl}" alt="">
                                  <h4><a href="/${datas.pageType}/${datas.titleUrl}">${datas.heading}</a></h4>
@@ -73,7 +75,7 @@
                            <div class="entry-img">
                               <img src="/resources/admin/images/${data.imgUrl}" width="100%" alt="" class="img-fluid">
                            </div>
-                           <h2 class="entry-title">${data.heading}</h2>
+                          
                           <!--  <div class="entry-meta">
                               <ul>
                                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">John Doe</a> </li>
@@ -82,6 +84,10 @@
                               </ul>
                            </div> -->
                            <div class="entry-content">
+<div class="posts-b">
+			      <time datetime="2020-01-01"><span>Date:</Span> ${data.posttime}</time>
+				<p><span>Posted By:</span> ${data.extraTag}</p>
+</div>
                               <p>${data.content}</p>
                               <jsp:include page="../landing/reviews.jsp"></jsp:include>
                            </div>
