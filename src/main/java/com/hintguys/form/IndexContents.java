@@ -19,4 +19,5 @@ public class IndexContents {
 	private String tfnHeader;
 	private String tfnPopup;
 	private String tfnFooter;
+	private String countryCode;
 }

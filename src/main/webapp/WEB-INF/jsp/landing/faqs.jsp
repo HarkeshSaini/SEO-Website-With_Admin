@@ -8,13 +8,23 @@
 <%@ page import="java.text.ParseException" %> 
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!doctype html>
-<html lang="es">
+<c:set var="code" value="${langCode.toLowerCase()}" scope="session"  />
+<%@ page trimDirectiveWhitespaces="true" %>
+<!DOCTYPE html>
+<html lang="${code}">
+   <head>
       <head>
          <meta charset="utf-8">
-         <title>Frequently Asked Questions</title>
-         <meta name="description" content="Frequently Asked Questions" >
-         <meta name="keywords" content="Frequently Asked Questions" />
+         <c:if test="${langCode =='EN'}">
+          <title>Frequently Asked Questions</title>
+          <meta name="description" content="Frequently Asked Questions" >
+          <meta name="keywords" content="Frequently Asked Questions" />
+         </c:if>
+         <c:if test="${langCode =='ES'}">
+          <title>Preguntas frecuentes</title>
+           <meta name="description" content="Preguntas frecuentes" >
+           <meta name="keywords" content="Preguntas frecuentes" />
+          </c:if>
          <jsp:include page="../include/home/common.jsp"></jsp:include>
       </head>
       <body>
@@ -24,11 +34,22 @@
                <div class="contact-banner">
                    <img src="/resources/pages/images/banner1.jpg" alt="banner" />
                   <div class="contact-content">
+                    <c:if test="${langCode =='EN'}">
                      <span>Frequently Asked Questions</span>
+                    </c:if>
+                    <c:if test="${langCode =='ES'}">
+                    <span>Preguntas frecuentes</span>
+                    </c:if>
                      <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
+                          <c:if test="${langCode =='EN'}">  
                            <li class="breadcrumb-item"><a href="/">Home</a></li>
                            <li class="breadcrumb-item active" aria-current="page">Faqs</li>
+                          </c:if>
+                          <c:if test="${langCode =='ES'}">  
+                           <li class="breadcrumb-item"><a href="/es">Casa</a></li>
+                           <li class="breadcrumb-item active" aria-current="page">Preguntas frecuentes</li>
+                          </c:if>
                         </ol>
                      </nav>
                   </div>
@@ -37,7 +58,12 @@
                   <div class="container">
                      <div class="row">
                       <div class="text-center heading_RWM">
+                         <c:if test="${langCode =='EN'}">
 				          <h2 class="main_heading"><span><label>Frequently<i></i></label><strong> Asked Questions</strong></span></h2>
+				         </c:if>
+				         <c:if test="${langCode =='ES'}">
+				          <h2 class="main_heading"><span><label>Frecuentemente<i></i></label><strong> Preguntas solicitadas</strong></span></h2>
+				         </c:if>
 				        </div>
                         <div class="col-vvxs-12 col-vxs-12 col-xs-12 col-sm-4 col-lg-4">
                            <div class="who_we_left">

@@ -4,9 +4,11 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<c:set var="code" value="${langCode.toLowerCase()}" scope="session"  />
 <%@ page trimDirectiveWhitespaces="true" %>
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="${code}">
+   <head>
    <c:forEach var="data" items="${blogTitleData}" >
       <head>
          <meta charset="utf-8">

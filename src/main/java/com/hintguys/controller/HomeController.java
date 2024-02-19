@@ -1,6 +1,5 @@
 package com.hintguys.controller;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import com.hintguys.form.HomeContents;
 import com.hintguys.service.impl.NewsArticlesServiceImpl;
 import com.hintguys.service.impl.PageServiceImpl;
 
@@ -28,34 +27,46 @@ public class HomeController {
 	@GetMapping("/")
 	public String index(HttpServletRequest request, Model model) {
 		try {
-			model.addAttribute("blogData", articlesServiceImpl.findAllNewsArticlePageTypeAndStatus("blog", "Active"));
-			model.addAttribute("airlinesData", articlesServiceImpl.findAllNewsArticlePageTypeAndStatus("airlines", "Active"));
-			model.addAttribute("technologyData", articlesServiceImpl.findAllNewsArticlePageTypeAndStatus("technology", "Active"));
-			model.addAttribute("insuranceData", articlesServiceImpl.findAllNewsArticlePageTypeAndStatus("insurance", "Active"));
-			model.addAttribute("categories", articlesServiceImpl.findAllCategories("Active"));
-			model.addAttribute("reviewForms", serviceImpl.getAllCategoriesRecentComment("Active"));
-			model.addAttribute("homeDetails", serviceImpl.findHomeContentDetails().get(0));
-			request.getSession().setAttribute("code", request.getRequestURI());
+			String code =new String();
+			model.addAttribute("blogData", articlesServiceImpl.findAllNewsArticlePageTypeAndStatus("blog", "Active", code));
+			model.addAttribute("airlinesData", articlesServiceImpl.findAllNewsArticlePageTypeAndStatus("airlines", "Active", code));
+			model.addAttribute("technologyData", articlesServiceImpl.findAllNewsArticlePageTypeAndStatus("technology", "Active", code));
+			model.addAttribute("insuranceData", articlesServiceImpl.findAllNewsArticlePageTypeAndStatus("insurance", "Active", code));
+			model.addAttribute("categories", articlesServiceImpl.findAllCategories("Active", code));
+			model.addAttribute("reviewForms", serviceImpl.getAllCategoriesRecentComment("Active", code));
+			List<HomeContents> listData = serviceImpl.findHomeContentDetails(code);
+			model.addAttribute("homeDetails", listData.get(0));
 			request.getSession().setAttribute("langCode", "EN");
 		} catch (Exception e) {
-			System.out.println("Size 0: index 0:");
+			e.printStackTrace();
 		}
 		return "index";
 	}
-	 
-	@RequestMapping(value = {"/es","/fr","/pt","/de","/hi"},method = RequestMethod.GET)
-	public String countryChange(HttpServletRequest request,Model model) {
-		String code = request.getRequestURI().replace("/", "");
-		List<String> arrayList=Arrays.asList("es","fr","pt","de","hi");
-		List<String> collect = arrayList.stream().filter(x->x.contains(code)).collect(Collectors.toList());
-		if(code.equals(collect.get(0))) {
-			try {
-				request.getSession().setAttribute("code", code);
-				request.getSession().setAttribute("langCode", code.toUpperCase());
-			} catch (Exception e) {
-				System.out.println("Size 0: index 0:");
+
+	@GetMapping(path = {"/es","fr"})
+	public String countryChange(HttpServletRequest request, Model model) {
+		String code=request.getRequestURI().replace("/", "");
+		List<HomeContents> countryList = serviceImpl.findHomeContentDetails(code);
+		List<String> countryCode = countryList.stream().map(x -> x.getCountryCode()).collect(Collectors.toList());
+		List<String> collect = countryCode.stream().filter(x -> x.contains(code)).collect(Collectors.toList());
+		for (String str : collect) {
+			if (code.equals(str)) {
+				try {
+					model.addAttribute("blogData", articlesServiceImpl.findAllNewsArticlePageTypeAndStatus("articulos", "Active", code));
+					model.addAttribute("airlinesData", articlesServiceImpl.findAllNewsArticlePageTypeAndStatus("aerolineas", "Active", code));
+					model.addAttribute("technologyData", articlesServiceImpl.findAllNewsArticlePageTypeAndStatus("tecnologia", "Active", code));
+					model.addAttribute("insuranceData", articlesServiceImpl.findAllNewsArticlePageTypeAndStatus("seguro", "Active", code));
+					model.addAttribute("categories", articlesServiceImpl.findAllCategories("Active", code));
+					model.addAttribute("reviewForms", serviceImpl.getAllCategoriesRecentComment("Active", code));
+					List<HomeContents> listData = serviceImpl.findHomeContentDetails(code);
+					request.getSession().setAttribute("langCode", code.toUpperCase());
+					model.addAttribute("homeDetails", listData.get(0));
+					return "index";
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		}
-	    return "index";
+		return "404-error";
 	}
 }

@@ -20,4 +20,5 @@ public class ReviewForms {
 	private String reviewRpyId;
 	private String reviewStatus;
 	private String reviewUrl;
+	private String countryCode;
 }

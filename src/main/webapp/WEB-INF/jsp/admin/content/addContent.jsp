@@ -63,12 +63,12 @@
                            </div>
                         </div>
                          <div class="row">
-                           <div class="col-md-4 mb-3">
+                           <div class="col-md-3 mb-3">
                               <div class="form-outline">
                                  <input type="date" name="date" class="form-control form-control-lg" placeholder="Enter Posttime" required="required"/>
                               </div>
                            </div>
-                           <div class="col-md-4 mb-3">
+                           <div class="col-md-3 mb-3">
                               <div class="form-outline">
                                  <select id="categoryName" name="categoryName" class="form-select form-control form-control-lg" aria-label="Default select example" required="required">
 	                                 <option selected>Select Category Name</option>
@@ -76,17 +76,33 @@
 	                                 <option value="privacy-policy">Privacy Policy</option>
 	                                 <option value="terms-conditions">Terms And Conditions</option>
 	                                 <option value="write-for-us">Write For Us</option>
+	                                 <!-- Spanish -->
+	                                 <option value="sobre-nosotros">About Us (ES)</option>
+	                                 <option value="politica-de-privacidad">Privacy Policy (ES)</option>
+	                                 <option value="terminos-y-condiciones">Terms And Conditions (ES)</option>
+	                                 <option value="escribe-para-nosotros">Write For Us (ES)</option>
 	                                  
 		                         </select>
                               </div>
                            </div>
-                           <div class="col-md-4 mb-3">
+                           <div class="col-md-3 mb-3">
                               <div class="form-outline">
                                   <div class="form-outline">
 	                                 <select id="status" name="status" class="form-select form-control form-control-lg" aria-label="Default select example" required="required">
 		                                 <option selected>Select Status</option>
 		                                 <option value="Active">Active</option>
 		                                 <option value="InActive">InActive</option>
+		                             </select>
+                                 </div>
+                                </div> 
+                              </div>
+                              <div class="col-md-3 mb-3">
+                              <div class="form-outline">
+                                  <div class="form-outline">
+	                                 <select id="countryCode" name="countryCode" class="form-select form-control form-control-lg" aria-label="Default select example" required="required">
+		                                 <option>Select Country Language</option>
+		                                 <option>English</option>
+		                                 <option value="es">Spanish</option>
 		                             </select>
                                  </div>
                                 </div> 

@@ -19,8 +19,8 @@ public interface PageService {
 
 	List<PageContents> findByPageContentCategoryNameAndStatus(String page, String status);
 
-	List<HomeContents> findHomeContentDetails();
-
 	List<ReviewForms> findByReviewUrl(String pageUrl, String status);
+
+	List<HomeContents> findHomeContentDetails(String code);
 
 }

@@ -4,9 +4,11 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<c:set var="code" value="${langCode.toLowerCase()}" scope="session"  />
 <%@ page trimDirectiveWhitespaces="true" %>
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="${code}">
+   <head>
    <head>
       <meta charset="utf-8">
       <title>${indexPage.title}</title>
@@ -41,10 +43,8 @@
             <div class="solution_cards_box">
               <div class="solution_card">
                 <div class="solu_description">
-               <!--  <picture><img src="/resources/admin/images/${data.imgUrl}" height="280px" alt="picture" /></picture> -->
-                  <!-- <span>${data.extraTag}</span> -->
                   <a href="/${indexPage.pageType}/${data.titleUrl}"><h3>${data.heading}</h3></a>
-                  <p>${fn:escapeXml(fn:substring(data.content.replaceAll('<.*?>' , ""), 0, 115))}</p>
+                  <p>${(fn:substring(data.content.replaceAll('<.*?>' , ""), 0, 115))}</p>
                   <a href="/${indexPage.pageType}/${data.titleUrl}" class="mores">More Blogs <i class="bi bi-arrow-right-short"></i></a>
                 </div>
               </div>

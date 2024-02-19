@@ -1,5 +1,6 @@
 package com.hintguys.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,10 +27,11 @@ public class FlightController {
 
 	@GetMapping("/flights")
 	public String flights(HttpServletRequest request, Model model) {
-		List<AirlineContents> airlineContents = null;
-		HomeContents homeDetails = null;
+		request.getSession().setAttribute("langCode", "EN");
+		List<AirlineContents> airlineContents =new ArrayList<AirlineContents>();
+		HomeContents homeDetails = new HomeContents();
 		try {
-			homeDetails = pageServiceImpl.findHomeContentDetails().get(0);
+			homeDetails = pageServiceImpl.findHomeContentDetails("").get(0);
 			airlineContents = airlineContentsRepository.FindAllAirlinesContents("Active", "airline");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -41,11 +43,12 @@ public class FlightController {
 
 	@GetMapping("/flights/{airlineName}")
 	public String flightsInner(@PathVariable("airlineName") String airlineName, HttpServletRequest request, Model model) {
-		List<AirlineContents> airlineContents = null;
-		List<AirlineContents> recentAirline = null;
-		HomeContents homeDetails = null;
+		request.getSession().setAttribute("langCode", "EN");
+		List<AirlineContents> airlineContents = new ArrayList<AirlineContents>();
+		List<AirlineContents> recentAirline = new ArrayList<AirlineContents>();
+		HomeContents homeDetails = new HomeContents();
 		try {
-			homeDetails = pageServiceImpl.findHomeContentDetails().get(0);
+			homeDetails = pageServiceImpl.findHomeContentDetails("").get(0);
 			airlineContents = airlineContentsRepository.findByStatusAndUrl("Active", airlineName, "airline");
 			recentAirline = airlineContentsRepository.findRecentAirlineContent("Active", "airline");
 			if(airlineContents.size() == 0) {

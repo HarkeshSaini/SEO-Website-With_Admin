@@ -244,6 +244,7 @@ public class AdminServiceImpl implements AdminContentService {
 			categories.setImgUrl(category.getImgUrl());
 			categories.setPostTime(category.getPostTime());
 			categories.setStatus(category.getStatus());
+			categories.setCountryCode(category.getCountryCode());
 			arrayList.add(categories);
 		}
 		return arrayList;

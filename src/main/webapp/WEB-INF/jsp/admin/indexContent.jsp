@@ -24,24 +24,24 @@
                      <div class="row">
                         <div class="col-md-4 mb-3">
                            <div class="form-outline">
-                              <input type="text" name="title"  class="form-control form-control-lg"  placeholder="Enter Title"/>
+                              <input type="text" name="title"  class="form-control form-control-lg"  placeholder="Enter Title" required="required"/>
                            </div>
                         </div>
                         <div class="col-md-4 mb-3">
                            <div class="form-outline">
-                              <input type="text" name="description" class="form-control form-control-lg" placeholder="Enter Description"/>
+                              <input type="text" name="description" class="form-control form-control-lg" placeholder="Enter Description" required="required"/>
                            </div>
                         </div>
                         <div class="col-md-4 mb-3">
                            <div class="form-outline">
-                              <input type="text" name="keywords" class="form-control form-control-lg" placeholder="Enter Keywords"/>
+                              <input type="text" name="keywords" class="form-control form-control-lg" placeholder="Enter Keywords" required="required"/>
                            </div>
                         </div>
                      </div>
                      <div class="row">
                         <div class="col-md-4 mb-3">
                            <div class="form-outline">
-                              <input type="text" name="content" class="form-control form-control-lg" placeholder="Enter content"/>
+                              <input type="text" name="content" class="form-control form-control-lg" placeholder="Enter content" required="required"/>
                            </div>
                         </div>
                         <div class="col-md-4 mb-3">

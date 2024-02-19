@@ -13,4 +13,5 @@ public class Categories {
 	public String categoryUrl;
 	public String postTime;
 	public String status;
+	private String countryCode;
 }

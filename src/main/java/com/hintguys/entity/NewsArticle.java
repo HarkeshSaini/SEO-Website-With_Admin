@@ -35,4 +35,5 @@ public class NewsArticle {
 		private String tfnHeader;
 		private String tfnFooter;
 		private String tfnPopup;
+		private String countryCode;
 }

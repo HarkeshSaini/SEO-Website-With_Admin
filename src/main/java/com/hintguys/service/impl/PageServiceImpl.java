@@ -38,7 +38,7 @@ public class PageServiceImpl implements PageService {
 
 	@Autowired
 	public IndexContentRepositroy indexContentRepositroy;
-	
+
 	@Autowired
 	public ReviewFormRepository formRepository;
 	@Autowired
@@ -87,8 +87,13 @@ public class PageServiceImpl implements PageService {
 	}
 
 	@Override
-	public List<HomeContents> findHomeContentDetails() {
-		List<HomeContent> homeContents = homeContentRepository.findAll();
+	public List<HomeContents> findHomeContentDetails(String code) {
+		List<HomeContent> homeContents = new ArrayList<HomeContent>();
+		if (!code.isEmpty()) {
+			homeContents = homeContentRepository.findByCountryCode(code);
+		} else {
+			homeContents = homeContentRepository.findAll();
+		}
 		ArrayList<HomeContents> arrayList = new ArrayList<HomeContents>();
 		if (!homeContents.isEmpty()) {
 			for (HomeContent content : homeContents) {
@@ -120,10 +125,14 @@ public class PageServiceImpl implements PageService {
 		}
 		return arrayList.get(0);
 	}
- 
 
-	public List<ReviewForms> getAllCategoriesRecentComment(String status) {
-		ArrayList<ReviewForm> details = formRepository.findByReviewStatus(status);
+	public List<ReviewForms> getAllCategoriesRecentComment(String status, String code) {
+		ArrayList<ReviewForm> details = new ArrayList<ReviewForm>();
+		if (!code.isEmpty()) {
+			details = formRepository.findByCountryCode(code);
+		} else {
+			details = formRepository.findByReviewStatus(status);
+		}
 		ArrayList<ReviewForms> arrayList = new ArrayList<ReviewForms>();
 		if (!details.isEmpty()) {
 			for (ReviewForm content : details) {

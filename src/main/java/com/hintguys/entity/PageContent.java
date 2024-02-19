@@ -32,4 +32,5 @@ public class PageContent {
 	private String tfnHeader;
 	private String tfnPopup;
 	private String tfnFooter;
+	private String countryCode;
 }

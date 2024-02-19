@@ -31,5 +31,6 @@ public class AirlineContents {
 	private String tfnHeader;
 	private String tfnPopup;
 	private String tfnFooter;
+	private String countryCode;
 	 
 }

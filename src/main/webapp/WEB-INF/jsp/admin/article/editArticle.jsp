@@ -106,23 +106,34 @@
                            </div>
                         </div>
                         <div class="row">
-                           <div class="col-md-4 mb-3">
+                           <div class="col-md-3 mb-3">
                               <div class="form-outline">
                                  <label class="form-label" for="tfnHeader">TfnHeader</label>
                                  <form:input type="text" path="tfnHeader" class="form-control form-control-lg" placeholder="Enter TfnHeader"/>
                               </div>
                            </div>
-                           <div class="col-md-4 mb-3">
+                           <div class="col-md-3 mb-3">
                               <div class="form-outline">
                                  <label class="form-label" for="tfnPopup">TfnPopup</label>
                                  <form:input type="text" path="tfnPopup" class="form-control form-control-lg" placeholder="Enter TfnPopup"/>
                               </div>
                            </div>
-                           <div class="col-md-4 mb-3">
+                           <div class="col-md-3 mb-3">
                               <div class="form-outline">
                               	 <label class="form-label" for="tfnFooter">TfnFooter</label>
                                  <form:input type="text" path="tfnFooter" class="form-control form-control-lg" placeholder="Enter TfnFooter"/>
                                  <div class="form-outline"> 
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-3 mb-3">
+                              <div class="form-outline">
+                                  <div class="form-outline">
+                                     <label class="form-label" for="countryCode">Country Languages</label>
+	                                 <form:select id="countryCode" path="countryCode" class="form-select form-control form-control-lg" aria-label="Default select example" required="required">
+		                                 <option>English</option>
+		                                 <form:option value="es">Spanish</form:option>
+		                             </form:select>
                                  </div>
                               </div>
                            </div>

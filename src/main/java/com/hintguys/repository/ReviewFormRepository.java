@@ -15,4 +15,6 @@ public interface ReviewFormRepository extends JpaRepository<ReviewForm, Integer>
 
 	ArrayList<ReviewForm> findByReviewStatus(String status);
 
+	ArrayList<ReviewForm> findByCountryCode(String code);
+
 }

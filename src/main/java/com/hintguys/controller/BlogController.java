@@ -1,7 +1,6 @@
 package com.hintguys.controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,18 +31,19 @@ public class BlogController {
 
    @GetMapping({"/{blogCategories}"})
    public String cancelation(@PathVariable String blogCategories, HttpServletRequest request, Model model) {
+	   request.getSession().setAttribute("langCode", "EN");
       List<NewsArticles> blogData = new ArrayList<NewsArticles>();
       IndexContents indexContents = new IndexContents();
       try {
          indexContents = this.pageServiceImpl.findByPageTypeIndexContent(blogCategories);
-         blogData = this.articlesServiceImpl.findAllNewsArticlePageTypeAndStatus(blogCategories, "Active");
-         model.addAttribute("homeDetails", this.pageServiceImpl.findHomeContentDetails().get(0));
+         blogData = this.articlesServiceImpl.findAllNewsArticlePageTypeAndStatus(blogCategories, "Active", "");
+         model.addAttribute("homeDetails", this.pageServiceImpl.findHomeContentDetails("").get(0));
       } catch (Exception var7) {
          var7.printStackTrace();
       }
       model.addAttribute("blogData", blogData);
       model.addAttribute("indexPage", indexContents);
-      List<Categories> listData = this.articlesServiceImpl.findAllCategories("Active");
+      List<Categories> listData = this.articlesServiceImpl.findAllCategories("Active", "");
       List<Categories> collect = listData.stream().filter(x->x.getCategoryUrl().equals(blogCategories)).collect(Collectors.toList());
       try {
           if (collect.size() ==0) {
@@ -67,15 +67,16 @@ public class BlogController {
 
    @GetMapping({"/{blogCategories}/{titleUrl}"})
    public String cancelationInnerPage(@PathVariable String blogCategories, @PathVariable String titleUrl, HttpServletRequest request, Model model) {
-      List<NewsArticles> recentArticle = new ArrayList<NewsArticles>();
+	   request.getSession().setAttribute("langCode", "EN");
+	   List<NewsArticles> recentArticle = new ArrayList<NewsArticles>();
       List<NewsArticles> articles = new ArrayList<NewsArticles>();
       List<FaqsContents> faqsContents = new ArrayList<FaqsContents>();
       try {
-         recentArticle = this.articlesServiceImpl.findRecentNewsArticle("Active", blogCategories);
+         recentArticle = this.articlesServiceImpl.findRecentNewsArticle("Active", blogCategories,"");
          articles = this.articlesServiceImpl.findNewsArticleByTitleUrlAndPageTypeAndStatus(titleUrl, blogCategories, "Active");
-         model.addAttribute("technologys", this.articlesServiceImpl.findRecentNewsArticle("Active", "technology"));
+         model.addAttribute("technologys", this.articlesServiceImpl.findRecentNewsArticle("Active", "technology",""));
          faqsContents = this.pageServiceImpl.findByUrlAndFaqStatus(titleUrl, "Active");
-         model.addAttribute("homeDetails", this.pageServiceImpl.findHomeContentDetails().get(0));
+         model.addAttribute("homeDetails", this.pageServiceImpl.findHomeContentDetails("").get(0));
       } catch (Exception var9) {
          var9.printStackTrace();
       }
@@ -92,14 +93,14 @@ public class BlogController {
       return "blog/innerPage";
    }
 
-   @GetMapping({"/categories"})
-   public @ResponseBody ResponseEntity<?> categories(HttpServletRequest request) {
-	   List<Categories> listData = new ArrayList<Categories>();
-       try {
-    	   listData = this.articlesServiceImpl.findAllCategories("Active");
-       } catch (Exception var4) {
-         var4.getMessage();
-       }
-       return new ResponseEntity<>(listData, HttpStatus.OK);
+    @GetMapping({ "/categories" })
+	public @ResponseBody ResponseEntity<?> categories(HttpServletRequest request) {
+		List<Categories> listData = new ArrayList<Categories>();
+		try {
+			listData = this.articlesServiceImpl.findAllCategories("Active", "");
+		} catch (Exception var4) {
+			var4.getMessage();
+		}
+		return new ResponseEntity<>(listData, HttpStatus.OK);
 	}
 }

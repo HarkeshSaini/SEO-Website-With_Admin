@@ -304,6 +304,17 @@ h6 {
   .navbar ul {
     display: none;
   }
+  header .container {
+    position: relative;
+}
+.nav-rhts .menu {
+    margin-left: 0;
+    position: absolute;
+    right: 60px;
+    top: 4px;
+}
+  
+  
 }
 
 .navbar-mobile {
@@ -782,10 +793,11 @@ div.solu_description {height: auto; padding: 10px;}
 div.blog .sidebar {margin-bottom:40px;}
 .team.reviews .member-info-content {    min-height: inherit;}
 section.about .image h3 {font-size:20px;}
-main#main {    margin-top: 60px;}
+body main#main {    margin-top: 60px;}
 body .blog .sidebar .recent-posts h4 a {font-size: 14px;}
   div.member-mains .member img {height: auto;    max-width: 100%;}
 .blog .entry .entry-content p a { word-break: break-word;}
+.home-banner img.img-fluid.test {height: auto;}
 
 
 }
@@ -2588,4 +2600,55 @@ a.mores {
     margin-right: 8px;
     color: #c44204;
 }
+/*=======================================*/
+#item {
+    background-color: #c44204;
+    color: white;
+    padding: 6px;
+    font-size: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+#item:hover, #item:focus {
+    background-color: #c44204;
+}
+.menu {
+    position: relative;
+    display: inline-block;
+}
+#submenu {
+    display: none;
+    margin-left: -34px;
+    margin-top: 6px;
+    border-radius: 7px;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+#submenu a {
+    color: #ffffff;
+    padding: 6px 9px;
+    font-size: 18px;
+    text-decoration: none;
+    display: block;
+}
+#submenu a:hover {
+    background-color: #c44204;
+}a.list-group-item {
+    padding: 4px 6px!important;
+    background: #c44204;
+}
+div#submenu {
+    padding: 6px 7px;
+    border-radius: 10px;
+}
 
+.nav-rhts {
+    display: flex;
+    align-items: center;
+}
+.nav-rhts .menu {
+    margin-left: 25px;
+}

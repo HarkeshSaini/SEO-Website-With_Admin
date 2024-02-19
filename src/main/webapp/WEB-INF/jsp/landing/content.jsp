@@ -8,8 +8,11 @@
 <%@ page import="java.text.ParseException" %> 
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!doctype html>
-<html lang="es">
+<c:set var="code" value="${langCode.toLowerCase()}" scope="session"  />
+<%@ page trimDirectiveWhitespaces="true" %>
+<!DOCTYPE html>
+<html lang="${code}">
+   <head>
    <c:forEach var="data" items="${blogTitleData}">
       <head>
          <meta charset="utf-8">
@@ -33,8 +36,13 @@
                      <span>${data.heading}</span>
                      <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                           <li class="breadcrumb-item"><a href="#">Home</a></li>
-                           <li class="breadcrumb-item active" aria-current="page">${data.heading}</li>
+                          <c:if test="${langCode =='EN'}">
+                           <li class="breadcrumb-item"><a href="/">Home</a></li>
+                          </c:if> 
+                          <c:if test="${langCode =='ES'}">
+                           <li class="breadcrumb-item"><a href="/es">Casa</a></li>
+                          </c:if> 
+                          <li class="breadcrumb-item active" aria-current="page">${data.heading}</li>
                         </ol>
                      </nav>
                   </div>

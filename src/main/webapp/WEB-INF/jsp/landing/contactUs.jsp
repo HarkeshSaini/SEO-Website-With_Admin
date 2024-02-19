@@ -8,13 +8,16 @@
 <%@ page import="java.text.ParseException" %> 
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!doctype html>
-<html lang="es">
+<c:set var="code" value="${langCode.toLowerCase()}" scope="session"  />
+<%@ page trimDirectiveWhitespaces="true" %>
+<!DOCTYPE html>
+<html lang="${code}">
+   <head>
    <head>
       <meta charset="utf-8">
       <title>Contact US</title>
-      <meta name="description" content="Contacta con nosotras" >
-      <meta name="keywords" content="Contacta con nosotras" />
+      <meta name="description" content="Contact US" >
+      <meta name="keywords" content="Contact US" />
       <jsp:include page="../include/home/common.jsp"></jsp:include>
    </head>
    <body>
